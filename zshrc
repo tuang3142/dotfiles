@@ -1,4 +1,4 @@
-# g
+# import auto suggestion history?
 autoload -U promptinit; promptinit
 prompt pure
 

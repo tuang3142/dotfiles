@@ -7,7 +7,8 @@
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-  let g:airline_theme='gruvbox' " [minimalism, gruvbox]
+  " let g:airline_theme='material' " [palenight, gruvbox]
+  let g:airline_theme='gruvbox' " [palenight, gruvbox]
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#show_close_button = 0
@@ -26,11 +27,15 @@ Plug 'gruvbox-community/gruvbox'
   " let g:gruvbox_italicize_comments = 1 currently not working
 Plug 'Yggdroot/indentLine'
   let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+Plug 'hzchirs/vim-material'
+  let g:material_style='palenight'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'rking/ag.vim'
 Plug 'wakatime/vim-wakatime'
 Plug 'slim-template/vim-slim'
+Plug 'kchmck/vim-coffee-script'
+Plug 'chrisbra/csv.vim'
 call plug#end()
 " end plug
 
@@ -106,5 +111,7 @@ if (has('termguicolors'))
 endif
 
 set background=dark
+" colorscheme vim-material " vim-material, gruvbox
 colorscheme gruvbox
-
+" load everybuffer in new tab
+"au BufAdd,BufNewFile * nested tab sball
