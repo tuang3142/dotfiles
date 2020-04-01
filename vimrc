@@ -7,7 +7,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-  " let g:airline_theme='material' " [palenight, gruvbox]
   let g:airline_theme='gruvbox' " [palenight, gruvbox]
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 1
@@ -111,7 +110,7 @@ if (has('termguicolors'))
 endif
 
 set background=dark
-" colorscheme vim-material " vim-material, gruvbox
-colorscheme gruvbox
+colorscheme gruvbox " vim-material, gruvbox
+" colorscheme gruvbox
 " load everybuffer in new tab
 "au BufAdd,BufNewFile * nested tab sball
