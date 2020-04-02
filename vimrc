@@ -35,6 +35,9 @@ Plug 'wakatime/vim-wakatime'
 Plug 'slim-template/vim-slim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'chrisbra/csv.vim'
+Plug 'takac/vim-hardtime'
+  let g:hardtime_default_on = 1
+Plug 'wikitopian/hardmode'
 call plug#end()
 " end plug
 
@@ -51,7 +54,7 @@ syntax enable
 set cursorline
 
 set number
-
+set relativenumber
 set autoindent
 
 set tabstop=2
