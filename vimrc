@@ -1,13 +1,8 @@
-" TODO: suggestion (auto complete) or intelisence, csv, vimcmd,
-" remap c-w and
-" contrinbute to gruvbox airline
-" what is mapping, ignomap? silence?
-
 " plug
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-  let g:airline_theme='gruvbox' " [palenight, gruvbox]
+  let g:airline_theme='gruvbox'
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#show_close_button = 0
@@ -16,28 +11,21 @@ Plug 'vim-airline/vim-airline-themes'
   let g:airline#extensions#show_buffer_count = 0
   let g:airline#extensions#tabline#formatter = 'unique_tail'
   let g:airline_section_y = 0 " hide file encoding (might change in the future)
-  let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab number
+  let g:airline#extensions#tabline#show_tab_nr = 0 " disable tab number
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'gruvbox-community/gruvbox'
   let g:gruvbox_underline = 1
   let g:gruvbox_invert_selection = 0
-  " let g:gruvbox_italicize_comments = 1 currently not working
 Plug 'Yggdroot/indentLine'
   let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-Plug 'hzchirs/vim-material'
-  let g:material_style='palenight'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'rking/ag.vim'
-Plug 'wakatime/vim-wakatime'
 Plug 'slim-template/vim-slim'
-Plug 'kchmck/vim-coffee-script'
-Plug 'chrisbra/csv.vim'
 Plug 'takac/vim-hardtime'
-  let g:hardtime_default_on = 1
-Plug 'wikitopian/hardmode'
+  let g:hardtime_default_on = 0
 call plug#end()
 " end plug
 
@@ -72,8 +60,6 @@ set showcmd
 " <\+l> to toggle highlight.
 let hlstate=0
 nnoremap <C-l> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=(hlstate+1)%2<cr>
-"nnoremap <C-<> :tabnew ~/.vim/vimrc<cr>
-"nnoremap <C-s> :w need to change to double esc
 
 set ignorecase
 set hlsearch
@@ -81,9 +67,6 @@ set incsearch
 
 " be smart when using tabs ;)
 set smarttab
-
-" set list
-set listchars=tab:>¬∑,trail:~,extends:>,precedes:<,space:.
 
 " suggestion for fills
 set wildmenu
