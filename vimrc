@@ -97,6 +97,5 @@ endif
 
 set background=dark
 colorscheme gruvbox " vim-material, gruvbox
-" colorscheme gruvbox
-" load everybuffer in new tab
-"au BufAdd,BufNewFile * nested tab sball
+
+" better navigation in pane vim
