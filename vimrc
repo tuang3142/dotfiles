@@ -21,7 +21,9 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'Yggdroot/indentLine'
   let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'rking/ag.vim'
 Plug 'slim-template/vim-slim'
 Plug 'takac/vim-hardtime'
@@ -39,7 +41,7 @@ filetype plugin on
 syntax enable
 
 " highline current line
-set cursorline
+" set cursorline
 
 set number
 set relativenumber
@@ -70,12 +72,14 @@ set smarttab
 
 " suggestion for fills
 set wildmenu
+set wildmode=list:longest,full
 
  " number of screenlines to keep above/below the cursor
 set scrolloff=3
 
 " open NERD tree
 map <C-n> :NERDTreeToggle<CR>
+map <S-n> :NERDTreeFind<CR>
 nnoremap <silent> <leader>f :FZF<cr>
 
 " change shape of cursor bwt modes
