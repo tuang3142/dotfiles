@@ -13,6 +13,7 @@ Plug 'vim-airline/vim-airline-themes'
   let g:airline_section_y = 0 " hide file encoding (might change in the future)
   let g:airline#extensions#tabline#show_tab_nr = 0 " disable tab number
 Plug 'preservim/nerdtree'
+  let NERDTreeShowLineNumbers=1
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'gruvbox-community/gruvbox'
@@ -62,6 +63,9 @@ set showcmd
 " <\+l> to toggle highlight.
 let hlstate=0
 nnoremap <C-l> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=(hlstate+1)%2<cr>
+
+" ctrl+s to save
+nnoremap <C-s> :w <cr>
 
 set ignorecase
 set hlsearch
