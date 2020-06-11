@@ -29,6 +29,9 @@ Plug 'rking/ag.vim'
 Plug 'slim-template/vim-slim'
 Plug 'takac/vim-hardtime'
   let g:hardtime_default_on = 0
+Plug 'pangloss/vim-javascript'
+  let g:javascript_conceal_function = "ƒ"
+Plug 'tpope/vim-cucumber'
 call plug#end()
 " end plug
 
@@ -67,6 +70,13 @@ nnoremap <C-l> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| end
 " ctrl+s to save
 nnoremap <C-s> :w <cr>
 
+" buffer switching
+nnoremap <silent> <leader>q :bprevious<cr>
+nnoremap <silent> <leader>w :bnext<cr>
+
+" source vimrc
+nnoremap <silent> <leader>r :source ~/dotfiles/vimrc<cr>
+
 set ignorecase
 set hlsearch
 set incsearch
@@ -78,7 +88,7 @@ set smarttab
 set wildmenu
 set wildmode=list:longest,full
 
- " number of screenlines to keep above/below the cursor
+" number of screenlines to keep above/below the cursor
 set scrolloff=3
 
 " open NERD tree
@@ -103,7 +113,11 @@ if (has('termguicolors'))
   set termguicolors
 endif
 
+" color scheme
 set background=dark
 colorscheme gruvbox " vim-material, gruvbox
+
+" render whitespace
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:.
 
 " better navigation in pane vim
