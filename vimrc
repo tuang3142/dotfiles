@@ -17,8 +17,9 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'gruvbox-community/gruvbox'
-  let g:gruvbox_underline = 1
+  let g:gruvbox_contrast_dark = 'hard'
   let g:gruvbox_invert_selection = 0
+  let g:gruvbox_bold=0
 Plug 'Yggdroot/indentLine'
   let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 Plug 'tpope/vim-commentary'
@@ -30,7 +31,6 @@ Plug 'slim-template/vim-slim'
 Plug 'takac/vim-hardtime'
   let g:hardtime_default_on = 0
 Plug 'pangloss/vim-javascript'
-  let g:javascript_conceal_function = "ƒ"
 Plug 'tpope/vim-cucumber'
 call plug#end()
 " end plug
@@ -109,13 +109,14 @@ endif
 " For Neovim > 0.1.5 and Vim > patch 7.4.1799 - https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162
 " Based on Vim patch 7.4.1770 (`guicolors` option) - https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd
 " https://github.com/neovim/neovim/wiki/Following-HEAD#20160511
-if (has('termguicolors'))
-  set termguicolors
-endif
+" if (has('termguicolors'))
+"   set termguicolors
+" endif
 
 " color scheme
 set background=dark
 colorscheme gruvbox " vim-material, gruvbox
+set t_Co=256
 
 " render whitespace
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:.
