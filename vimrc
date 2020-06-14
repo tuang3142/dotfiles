@@ -65,7 +65,7 @@ set showcmd
 
 " <\+l> to toggle highlight.
 let hlstate=0
-nnoremap <C-l> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=(hlstate+1)%2<cr>
+nnoremap <leader>l :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=(hlstate+1)%2<cr>
 
 " ctrl+s to save
 nnoremap <C-s> :w <cr>

@@ -89,6 +89,8 @@ fi
 alias zshconfig="nvim ~/.zshrc"
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+alias dev='cd ~/remitano; tmux'
+alias thi='cd ~/cf; tmux'
 # alias ohmyzsh="nvim ~/.oh-my-zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -97,5 +99,3 @@ alias pbpaste='xclip -selection clipboard -o'
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/cf"
-
-
