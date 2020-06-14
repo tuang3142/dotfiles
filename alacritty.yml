@@ -123,8 +123,7 @@ key_bindings:
   - { key: T,        mods: Alt,           chars: "\x06c"                     } # new tab
   - { key: W,        mods: Alt,           chars: "\x06&"                     } # prev tab
   - { key: R,        mods: Alt,           chars: "\x06r"                     } # load tmux
-  # - { key: V,        mods: Alt,           chars: "\x06 "                     } # vi mode
   - { key: E,        mods: Alt,           chars: "\x06z"                     } # zoom
-  # - { key: F,        mods: Alt,           chars: "\x02/"                     }  # search (upwards) (see tmux.conf)
+  - { key: F,        mods: Alt,           chars: "\x06\x20"                     }  # search (upwards) (see tmux.conf)
   # copy in vi mode
   # resize window
