@@ -76,6 +76,7 @@ nnoremap <silent> <leader>w :bnext<cr>
 
 " source vimrc
 nnoremap <silent> <leader>r :source ~/dotfiles/vimrc<cr>
+nnoremap <silent> <leader>e :tabnew ~/dotfiles/vimrc<cr>
 
 set ignorecase
 set hlsearch
@@ -95,6 +96,7 @@ set scrolloff=3
 map <C-n> :NERDTreeToggle<CR>
 map <S-n> :NERDTreeFind<CR>
 nnoremap <silent> <leader>f :FZF<cr>
+nnoremap <silent> <leader>g :History<cr>
 
 " change shape of cursor bwt modes
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
