@@ -175,7 +175,7 @@ key_bindings:
   - { key: W,        mods: Alt,           chars: "\x06&"                     } # prev tab
   - { key: R,        mods: Alt,           chars: "\x06r"                     } # load tmux
   # - { key: V,        mods: Alt,           chars: "\x06 "                     } # vi mode
-  # - { key: Z,        mods: Alt,           chars: "\x06r"                     } # zoom
+  - { key: E,        mods: Alt,           chars: "\x06z"                     } # zoom
   # - { key: F,        mods: Alt,           chars: "\x02/"                     }  # search (upwards) (see tmux.conf)
   # copy in vi mode
   # resize window
