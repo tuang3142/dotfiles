@@ -73,6 +73,16 @@ nnoremap <C-s> :w <cr>
 " buffer switching
 nnoremap <silent> <leader>q :bprevious<cr>
 nnoremap <silent> <leader>w :bnext<cr>
+" tab switching
+nnoremap <silent> <S-w> :tabnext<cr>
+nnoremap <silent> <S-q> :tabprevious<cr>
+" split switching
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+set splitbelow
+set splitright
 
 " source vimrc
 nnoremap <silent> <leader>r :source ~/dotfiles/vimrc<cr>
