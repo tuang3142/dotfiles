@@ -14,6 +14,8 @@ Plug 'vim-airline/vim-airline-themes'
   let g:airline#extensions#tabline#show_tab_nr = 0 " disable tab number
 Plug 'preservim/nerdtree'
   let NERDTreeShowLineNumbers=1
+  let g:NERDTreeDirArrowExpandable = ''
+  let g:NERDTreeDirArrowCollapsible = ''
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'gruvbox-community/gruvbox'
@@ -32,6 +34,10 @@ Plug 'takac/vim-hardtime'
   let g:hardtime_default_on = 0
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-cucumber'
+Plug 'ryanoasis/vim-devicons'
+  let g:webdevicons_conceal_nerdtree_brackets = 1
+Plug 'vim/killersheep'
+Plug 'johngrib/vim-game-code-break'
 call plug#end()
 " end plug
 
@@ -81,6 +87,11 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+" " split rotate
+" nnoremap <C-S-J> <C-W><S-i>
+" nnoremap <C-S-K> <C-W><S-k>
+" nnoremap <C-S-L> <C-W><S-l>
+" nnoremap <C-S-H> <C-W><S-h>
 set splitbelow
 set splitright
 
@@ -104,7 +115,7 @@ set scrolloff=3
 
 " open NERD tree
 map <C-n> :NERDTreeToggle<CR>
-map <S-n> :NERDTreeFind<CR>
+map <C-m> :NERDTreeFind<CR>
 nnoremap <silent> <leader>f :FZF<cr>
 nnoremap <silent> <leader>g :History<cr>
 
@@ -127,10 +138,9 @@ endif
 
 " color scheme
 set background=dark
+set noequalalways
 colorscheme gruvbox " vim-material, gruvbox
 set t_Co=256
 
 " render whitespace
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:.
-
-" better navigation in pane vim
