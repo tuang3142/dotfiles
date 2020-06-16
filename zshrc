@@ -91,6 +91,7 @@ alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias dev='cd ~/remitano; tmux'
 alias thi='cd ~/cf; tmux'
+alias cl='clear'
 # alias ohmyzsh="nvim ~/.oh-my-zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
