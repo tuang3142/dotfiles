@@ -32,18 +32,15 @@ Plug 'rking/ag.vim'
 Plug 'slim-template/vim-slim'
 Plug 'takac/vim-hardtime'
   let g:hardtime_default_on = 0
-Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-cucumber'
-Plug 'ryanoasis/vim-devicons'
-  let g:webdevicons_conceal_nerdtree_brackets = 1
-Plug 'vim/killersheep'
-Plug 'johngrib/vim-game-code-break'
+Plug 'nvie/vim-flake8'
+Plug 'kchmck/vim-coffee-script'
 call plug#end()
 " end plug
 
 " use Vim settings rather than Vi
 set nocompatible
-
+set autowrite     " Automatically :write before running commands
 " enable filetype plugins
 filetype plugin on
 
@@ -70,9 +67,8 @@ set ruler
 set showcmd
 
 " <\+l> to toggle highlight.
-let hlstate=0
 nnoremap <leader>l :set hlsearch! hlsearch?<cr>
-
+nnoremap <leader>t :set relativenumber! relativenumber?<cr>
 " ctrl+s to save
 nnoremap <C-s> :w <cr>
 
@@ -96,8 +92,8 @@ set splitbelow
 set splitright
 
 " source vimrc
-nnoremap <silent> <leader>r :source ~/dotfiles/vimrc<cr>
-nnoremap <silent> <leader>e :tabnew ~/dotfiles/vimrc<cr>
+nnoremap <silent> <leader>r :source ~/tuang3142/dotfiles/vimrc<cr>
+nnoremap <silent> <leader>e :tabnew ~/tuang3142/dotfiles/vimrc<cr>
 
 set ignorecase
 set hlsearch
@@ -111,13 +107,13 @@ set wildmenu
 set wildmode=list:longest,full
 
 " number of screenlines to keep above/below the cursor
-set scrolloff=3
+set scrolloff=10
 
 " open NERD tree
 map <C-n> :NERDTreeToggle<CR>
 map <C-m> :NERDTreeFind<CR>
-nnoremap <silent> <leader>f :FZF<cr>
-nnoremap <silent> <leader>g :History<cr>
+nnoremap <silent> <leader>f :Files<cr>
+nnoremap <silent> <leader>b :Buffers<cr>
 
 " change shape of cursor bwt modes
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"

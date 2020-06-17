@@ -86,13 +86,10 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="nvim ~/.zshrc"
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
+alias zshconfig='nvim ~/tuang3142/dotfiles/zshrc'
 alias dev='cd ~/remitano; tmux'
-alias thi='cd ~/cf; tmux'
-alias cl='clear'
-# alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias thi='cd ~/tuang3142/cf; tmux'
+# alias pip='pip3'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -100,3 +97,4 @@ alias cl='clear'
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/cf"
+export PATH="$PATH:$HOME/.local/bin"
