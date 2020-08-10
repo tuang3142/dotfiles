@@ -66,7 +66,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(rails ruby git colored-man-pages git zsh-autosuggestions zsh-syntax-highlighting vi-mode)
+plugins=(git colored-man-pages git zsh-autosuggestions zsh-syntax-highlighting vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,13 +88,12 @@ fi
 # Example aliases
 alias zshconfig='nvim ~/tuang3142/dotfiles/zshrc'
 alias dev='cd ~/remitano; tmux'
-alias thi='cd ~/tuang3142/cf; tmux'
-# alias pip='pip3'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-export PATH="$PATH:$HOME/cf"
+# export PATH="$PATH:$HOME/cf"
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:/home/tuang3142/.cargo/bin"
