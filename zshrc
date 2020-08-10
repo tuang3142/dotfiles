@@ -97,3 +97,4 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # export PATH="$PATH:$HOME/cf"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/home/tuang3142/.cargo/bin"
+$HOME/.asdf/asdf.sh
