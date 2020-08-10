@@ -66,8 +66,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages git zsh-autosuggestions zsh-syntax-highlighting vi-mode)
-
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
@@ -97,4 +96,5 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # export PATH="$PATH:$HOME/cf"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/home/tuang3142/.cargo/bin"
-$HOME/.asdf/asdf.sh
+. $HOME/.asdf/asdf.sh
+source ~/.bash_profile
