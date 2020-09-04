@@ -40,7 +40,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -66,7 +66,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting vi-mode)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions vi-mode)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=gray"
 source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
@@ -87,14 +88,17 @@ fi
 # Example aliases
 alias zshconfig='nvim ~/tuang3142/dotfiles/zshrc'
 alias dev='cd ~/remitano; tmux'
+alias p3='python3'
+alias amend='git commit --amend'
+alias amendn='git commit --amend -no-veiry'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-# export PATH="$PATH:$HOME/cf"
+export PATH="$PATH:$HOME/tuang3142/codeforces"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/home/tuang3142/.cargo/bin"
 . $HOME/.asdf/asdf.sh
-source ~/.bash_profile
+fpath+=${ZDOTDIR:-~}/.zsh_functions

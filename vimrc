@@ -35,6 +35,7 @@ Plug 'takac/vim-hardtime'
 Plug 'tpope/vim-cucumber'
 Plug 'nvie/vim-flake8'
 Plug 'kchmck/vim-coffee-script'
+Plug 'tpope/vim-endwise'
 call plug#end()
 " end plug
 
@@ -66,6 +67,9 @@ set ruler
 " show incomplete commands
 set showcmd
 
+highlight ColorColumn ctermbg=magenta
+set colorcolumn=103
+" call matchadd('ColorColumn', '\%81v', 100)
 " <\+l> to toggle highlight.
 nnoremap <leader>l :set hlsearch! hlsearch?<cr>
 nnoremap <leader>t :set relativenumber! relativenumber?<cr>
@@ -114,6 +118,7 @@ map <C-n> :NERDTreeToggle<CR>
 map <C-m> :NERDTreeFind<CR>
 nnoremap <silent> <leader>f :Files<cr>
 nnoremap <silent> <leader>b :Buffers<cr>
+nnoremap <silent> <leader>h :History<cr>
 
 " change shape of cursor bwt modes
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -125,9 +130,6 @@ if (has('nvim'))
   let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 endif
 
-" For Neovim > 0.1.5 and Vim > patch 7.4.1799 - https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162
-" Based on Vim patch 7.4.1770 (`guicolors` option) - https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd
-" https://github.com/neovim/neovim/wiki/Following-HEAD#20160511
 if (has('termguicolors'))
   set termguicolors
 endif
