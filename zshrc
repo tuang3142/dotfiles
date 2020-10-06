@@ -40,7 +40,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -67,7 +67,7 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions vi-mode)
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=gray"
+
 source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
@@ -95,10 +95,18 @@ alias amendn='git commit --amend -no-veiry'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/tuang3142/codeforces"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/home/tuang3142/.cargo/bin"
-. $HOME/.asdf/asdf.sh
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+ZSH_DISABLE_COMPFIX=true
+source ~/.bash_profile
+
+# openssl
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@1.1"
+export CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@1.1"

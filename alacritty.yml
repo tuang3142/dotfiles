@@ -1,21 +1,24 @@
 font:
   normal:
     family: "MesloLGS NF"
+    # family: "Fira Code"
     style: Regular
 
   bold:
     family: "MesloLGS NF"
+    # family: "Fira Code"
 
   italic:
     family: "MesloLGS NF"
+    # family: "Fira Code"
 
-  size: 13.0
+  size: 14.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
   offset:
     x: 0
-    y: 1
+    y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increase the x offset to move the glyph to
@@ -104,28 +107,28 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Windowed
+  startup_mode: Maximized
 
 key_bindings:
-  - { key: N,        mods: Alt|Shift,     action: SpawnNewInstance           }
-  - { key: Return,   mods: Alt,           action: ToggleFullscreen           }
+  - { key: N,        mods: Command|Shift,     action: SpawnNewInstance           }
+  - { key: Return,   mods: Command,           action: ToggleFullscreen            }
 
-    # shortcuts for tmux. the leader key is control-f (0x06)
-  - { key: M,        mods: Alt,           chars: "\x06n"                     } # select next tab
-  - { key: N,        mods: Alt,           chars: "\x06p"                     } # select previous tab
-  - { key: J,        mods: Alt|Control,       chars: "\x06s"                     } # split window verically
-  - { key: L,        mods: Alt|Control,       chars: "\x06v"                     } # split window horrizontally
-  - { key: H,        mods: Alt,           chars: "\x06h"                     } # h
-  - { key: J,        mods: Alt,           chars: "\x06j"                     } # j
-  - { key: K,        mods: Alt,           chars: "\x06k"                     } # k
-  - { key: L,        mods: Alt,           chars: "\x06l"                     } # l
-  - { key: T,        mods: Alt,           chars: "\x06c"                     } # new tab
-  - { key: W,        mods: Alt,           chars: "\x06x"                     } # kill pane
-  - { key: W,        mods: Alt|Shift,     chars: "\x06&"                     } # kill window
-  - { key: R,        mods: Alt,           chars: "\x06r"                     } # load tmux
-  - { key: E,        mods: Alt,           chars: "\x06z"                     } # zoom
-  - { key: F,        mods: Alt,           chars: "\x06\x20"                  } # vi mode
-  - { key: H,        mods: Alt|Shift,     chars: "\x06H"                     } # resize
-  - { key: J,        mods: Alt|Shift,     chars: "\x06J"                     } # resize
-  - { key: K,        mods: Alt|Shift,     chars: "\x06K"                     } # resize
-  - { key: L,        mods: Alt|Shift,     chars: "\x06L"                     } # resize
+    # shortcuts for tmux. tCommandleader key is control-f (0x06)
+  - { key: P,        mods: Command,           chars: "\x06n"                     } # select next tab
+  - { key: O,        mods: Command,           chars: "\x06p"                     } # select previous tab
+  - { key: J,        mods: Command|Control,       chars: "\x06s"                     } # split window verically
+  - { key: L,        mods: Command|Control,       chars: "\x06v"                     } # split window horrizontally
+  - { key: H,        mods: Command,           chars: "\x06h"                     } # h
+  - { key: J,        mods: Command,           chars: "\x06j"                     } # j
+  - { key: K,        mods: Command,           chars: "\x06k"                     } # k
+  - { key: L,        mods: Command,           chars: "\x06l"                     } # l
+  - { key: T,        mods: Command,           chars: "\x06c"                     } # new tab
+  - { key: W,        mods: Command,           chars: "\x06x"                     } # kill pane
+  - { key: W,        mods: Command|Shift,     chars: "\x06&"                     } # kill window
+  - { key: R,        mods: Command,           chars: "\x06r"                     } # load tmux
+  - { key: E,        mods: Command,           chars: "\x06z"                     } # zoom
+  - { key: F,        mods: Command,           chars: "\x06\x20"                  } # vi mode
+  - { key: H,        mods: Command|Shift,     chars: "\x06H"                     } # resize
+  - { key: J,        mods: Command|Shift,     chars: "\x06J"                     } # resize
+  - { key: K,        mods: Command|Shift,     chars: "\x06K"                     } # resize
+  - { key: L,        mods: Command|Shift,     chars: "\x06L"                     } # resize
