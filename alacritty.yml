@@ -111,7 +111,9 @@ window:
 
 key_bindings:
   - { key: N,        mods: Command|Shift,     action: SpawnNewInstance           }
-  - { key: Return,   mods: Command,           action: ToggleFullscreen            }
+  # - { key: Return,   mods: Command,           action: ToggleFullscreen            }
+  - { key: M,   mods: Command,           action: ToggleFullscreen            }
+
 
     # shortcuts for tmux. tCommandleader key is control-f (0x06)
   - { key: P,        mods: Command,           chars: "\x06n"                     } # select next tab

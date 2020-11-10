@@ -32,7 +32,7 @@ Plug 'tpope/vim-surround'
 Plug 'rking/ag.vim'
 Plug 'slim-template/vim-slim'
 Plug 'takac/vim-hardtime'
-  let g:hardtime_default_on = 0
+  let g:hardtime_default_on = 1
 Plug 'tpope/vim-cucumber'
 Plug 'nvie/vim-flake8'
 Plug 'kchmck/vim-coffee-script'
@@ -42,12 +42,14 @@ Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 " Plug 'ycm-core/YouCompleteMe'
 call plug#end()
+Plug 'neoclide/coc.nvim'
 " end plug
 
 " use Vim settings rather than Vi
 set nocompatible
 set autowrite     " Automatically :write before running commands
 set autoread     " Automatically :write before running commands
+autocmd VimResized * wincmd =
 " enable filetype plugins
 filetype plugin on
 
@@ -92,8 +94,9 @@ nnoremap <silent> <leader>q :bprevious<cr>
 nnoremap <silent> <leader>w :bnext<cr>
 nnoremap <silent> <leader>d :bd<cr>
 " tab switching
-" nnoremap <silent> <S-w> :tabnext<cr>
-" nnoremap <silent> <S-q> :tabprevious<cr>
+nnoremap <silent> tp :tabnext<cr>
+nnoremap <silent> to :tabprevious<cr>
+nnoremap <silent> tn :tabnew<cr>
 nnoremap <S-w> <C-w>
 " split switching
 nnoremap <C-J> <C-W><C-J>
@@ -176,3 +179,10 @@ nmap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
 nmap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
 nmap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
 nmap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
+
+" ignore arrow
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
