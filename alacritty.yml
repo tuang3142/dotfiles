@@ -1,18 +1,19 @@
 font:
   normal:
-    family: "MesloLGS NF"
-    # family: "Fira Code"
+    # family: "MesloLGS NF"
+    family: "Fira Code"
     style: Regular
 
   bold:
     family: "MesloLGS NF"
     # family: "Fira Code"
+    style: Medium
 
   italic:
     family: "MesloLGS NF"
     # family: "Fira Code"
 
-  size: 14.0
+  size: 14
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.

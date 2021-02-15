@@ -91,6 +91,7 @@ alias dev='cd ~/remitano; tmux'
 alias p3='python3'
 alias amend='git commit --amend'
 alias amendn='git commit --amend -no-veiry'
+alias clr='clear'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -110,3 +111,5 @@ export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
 export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@1.1"
 export CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@1.1"
+export GPG_TTY=$(tty)
+bindkey '^ ' autosuggest-accept

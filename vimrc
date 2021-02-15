@@ -1,7 +1,11 @@
+" use Vim settings rather than Vi
+set nocompatible
+
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
+Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline-themes'
-  let g:airline_theme='gruvbox'
+  let g:airline_theme='nord'
   let g:airline_powerline_fonts = 1
   " let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#show_close_button = 0
@@ -29,10 +33,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'rking/ag.vim'
+Plug 'ggreer/the_silver_searcher'
 Plug 'slim-template/vim-slim'
-Plug 'takac/vim-hardtime'
-  let g:hardtime_default_on = 1
 Plug 'tpope/vim-cucumber'
 Plug 'nvie/vim-flake8'
 Plug 'kchmck/vim-coffee-script'
@@ -40,15 +42,18 @@ Plug 'tpope/vim-endwise'
 Plug 'vim-test/vim-test'
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 Plug 'neoclide/coc.nvim'
+Plug 'pangloss/vim-javascript'
+Plug 'wakatime/vim-wakatime'
 " end plug
 
-" use Vim settings rather than Vi
-set nocompatible
 set autowrite     " Automatically :write before running commands
 set autoread     " Automatically :write before running commands
+set hidden
+set noswapfile
+set nobackup
+set nowb
 autocmd VimResized * wincmd =
 " enable filetype plugins
 filetype plugin on
@@ -64,6 +69,7 @@ augroup CursorLine
 augroup END
 set cursorline
 
+set spell
 set number
 set relativenumber
 set autoindent
@@ -81,11 +87,11 @@ set ruler
 set showcmd
 
 let mapleader = "'"
-" call matchadd('ColorColumn', '\%81v', 100)
 " <\+l> to toggle highlight.
 nnoremap <leader>l :set hlsearch! hlsearch?<cr>
 nnoremap <leader>t :set relativenumber! relativenumber?<cr>
 nnoremap <leader>g :Gst<cr>
+nnoremap <Leader>x :%s/\<<C-r><C-w>\>//g<Left><Left>
 " ctrl+s to save
 nnoremap <leader>s :w <cr>
 
@@ -97,7 +103,6 @@ nnoremap <silent> <leader>d :bd<cr>
 nnoremap <silent> tp :tabnext<cr>
 nnoremap <silent> to :tabprevious<cr>
 nnoremap <silent> tn :tabnew<cr>
-nnoremap <S-w> <C-w>
 " split switching
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -129,7 +134,7 @@ set wildmenu
 set wildmode=list:longest,full
 
 " number of screenlines to keep above/below the cursor
-set scrolloff=10
+set scrolloff=2
 
 " open NERD tree
 map <C-n> :NERDTreeToggle<CR>
@@ -157,7 +162,8 @@ endif
 " color scheme
 set background=dark
 set noequalalways
-colorscheme gruvbox " vim-material, gruvbox
+" colorscheme gruvbox " vim-material, gruvbox
+colorscheme nord
 set t_Co=256
 
 " render whitespace
@@ -186,3 +192,17 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
+nnoremap <leader>a :Ag<CR>
+runtime macros/matchit.vim
