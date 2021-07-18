@@ -1,3 +1,6 @@
+# This rc is awfully unorganize. Will be fixed later
+
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -13,6 +16,9 @@ export ZSH=$HOME/.oh-my-zsh
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
+# .zshrc
+autoload -U promptinit; promptinit
+# prompt pure
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -66,7 +72,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-completions vi-mode)
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions vi-mode)
+# autoload -U compinit && compinit
+# typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 source $ZSH/oh-my-zsh.sh
 
@@ -87,11 +96,15 @@ fi
 #
 # Example aliases
 alias zshconfig='nvim ~/tuang3142/dotfiles/zshrc'
-alias dev='cd ~/remitano; tmux'
-alias p3='python3'
+alias py='python3'
+alias rb='ruby'
 alias amend='git commit --amend'
-alias amendn='git commit --amend -no-veiry'
-alias clr='clear'
+alias amendl='git commit --amend --no-verify' # amend lazy
+alias cl='clear'
+alias ide='tmux split-window -v -p 30; tmux split-window -h -p 50; tmux split-window -h -p 50'
+alias rmf='rm -rf'
+alias console='bin/rails console'
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -112,4 +125,41 @@ export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@1.1"
 export CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@1.1"
 export GPG_TTY=$(tty)
-bindkey '^ ' autosuggest-accept
+export PATH="/usr/local/opt/m4/bin:$PATH"
+export PATH="/usr/local/opt/node@14/bin:$PATH"
+
+# export FZF_DEFAULT_OPTS='
+#   --color fg:242,bg:233,hl:65,fg+:15,bg+:234,hl+:108
+#   --color info:108,prompt:109,spinner:108,pointer:168,marker:168
+# '
+
+# Base16 Tomorrow Night
+# Author: Chris Kempson (http://chriskempson.com)
+
+_gen_fzf_default_opts() {
+
+local color00='#1d1f21'
+local color01='#282a2e'
+local color02='#373b41'
+local color03='#969896'
+local color04='#b4b7b4'
+local color05='#c5c8c6'
+local color06='#e0e0e0'
+local color07='#ffffff'
+local color08='#cc6666'
+local color09='#de935f'
+local color0A='#f0c674'
+local color0B='#b5bd68'
+local color0C='#8abeb7'
+local color0D='#81a2be'
+local color0E='#b294bb'
+local color0F='#a3685a'
+
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
+" --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D"\
+" --color=fg:$color04,header:$color0D,info:$color0A,pointer:$color0C"\
+" --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D"
+
+}
+
+_gen_fzf_default_opts
