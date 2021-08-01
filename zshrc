@@ -101,7 +101,7 @@ alias rb='ruby'
 alias amend='git commit --amend'
 alias amendl='git commit --amend --no-verify' # amend lazy
 alias cl='clear'
-alias ide='tmux split-window -v -p 30; tmux split-window -h -p 50; tmux split-window -h -p 50'
+alias ide='tmux split-window -h -p 25; tmux split-window -v -p 50; tmux split-window -v -p 50'
 alias rmf='rm -rf'
 alias console='bin/rails console'
 
