@@ -12,14 +12,24 @@ Plug 'sirver/UltiSnips'
   let g:UltiSnipsEditSplit="horizontal"
 Plug 'itchyny/lightline.vim'
   let g:lightline = {
-  \   'colorscheme': 'ayu_mirage',
+  \ 'mode_map': {
+    \ 'n' : 'λ',
+    \ 'i' : 'i',
+    \ 'R' : 'r',
+    \ 'v' : 'v',
+    \ 'V' : 'vl',
+    \ "\<C-v>": 'vb',
+    \ 'c' : 'c',
+    \ 's' : 's',
+    \ 'S' : 'sl',
+    \ "\<C-s>": 'sb',
+    \ 't': 't',
+    \ },
+  \   'colorscheme': 'jellybeans',
   \   'active': {
   \      'left': [ [ 'mode', 'paste' ],
-  \                [ 'readonly', 'relativepath', 'modified' ] ],
-  \      'right': [ [ 'percent', 'lineinfo'] ],
-  \   },
-  \   'component': {
-  \     'lineinfo': ' %l:%v',
+  \                [ 'readonly', 'relativepath' ] ],
+  \      'right': [ ],
   \   },
   \ }
   let g:lightline.separator = {
@@ -30,7 +40,7 @@ Plug 'itchyny/lightline.vim'
   \}
   let g:lightline.tabline = {
   \   'left': [ [ 'tabs' ] ],
-  \   'right': [],
+  \   'right': []
   \ }
 Plug 'preservim/nerdtree'
   let NERDTreeShowLineNumbers=1
@@ -41,17 +51,16 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
   let g:fzf_preview_window = []
-Plug 'Yggdroot/indentLine'
-  let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'ggreer/the_silver_searcher'
-Plug 'slim-template/vim-slim'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-cucumber'
 Plug 'tpope/vim-endwise'
+Plug 'ggreer/the_silver_searcher'
+Plug 'slim-template/vim-slim'
 Plug 'vim-test/vim-test'
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
@@ -64,11 +73,17 @@ Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'nanotech/jellybeans.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
+Plug 'ycm-core/YouCompleteMe'
+Plug 'https://github.com/edkolev/tmuxline.vim'
+Plug 'ecomba/vim-ruby-refactoring'
+Plug 'Yggdroot/indentLine'
+  let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+  let g:indentLine_enabled = 0
 call plug#end()
 
 set noshowmode " hide mode, lightline does the jobs
 set autowrite  " Automatically :write before running commands
-set autoread
+" set autoread
 set hidden
 set noswapfile
 set nobackup
@@ -76,7 +91,7 @@ set nowb
 
 autocmd VimResized * wincmd =
 " enable filetype plugins
-" filetype plugin on
+filetype plugin on
 
 " enable color
 syntax enable
@@ -87,7 +102,7 @@ augroup CursorLine
     au WinLeave * setlocal nocursorline
 augroup END
 set cursorline
-set colorcolumn=80 " line limit
+set colorcolumn=100 " line limit
 set number
 set relativenumber
 set autoindent
@@ -123,9 +138,6 @@ endfunction
 " inoremap <S-Tab> <C-n>
 
 " " Use ag over grep
-" if executable('ag')
-"   set grepprg=ag\ --nogroup\ --nocolor
-" endif
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -152,12 +164,12 @@ endif
 
 if (has('termguicolors'))
   set termguicolors
+  set t_Co=256
 endif
 
 set noequalalways
 
 " color scheme
-set t_Co=256
 set background=dark
 colorscheme jellybeans
 
@@ -186,7 +198,6 @@ nnoremap <leader>tv :tabnew ~/tuang/dotfiles/vimrc<cr>
 nnoremap <leader>sv :source ~/tuang/dotfiles/vimrc<cr>
 
 nnoremap <leader>l :set hlsearch! hlsearch?<cr>
-nnoremap <leader>t :set relativenumber! relativenumber?<cr>
 map <leader>us :UltiSnipsEdit<cr>
 map <leader>e :e!<cr>
 map <leader>E :bufdo e!<cr>
@@ -194,7 +205,7 @@ map <leader>I :PlugInstall<cr>
 nnoremap <leader>x :x <cr>
 
 "find and replace
-nnoremap <leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
+nnoremap <leader>R :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <leader>w :w <cr>
 nnoremap <leader>q :q! <cr>
 nnoremap <leader>Q :wqa! <cr>
@@ -208,9 +219,8 @@ nnoremap <silent> <leader>i :Lines<cr>
 nnoremap <silent> <leader>d :bd<cr>
 
 " tab switching
-nnoremap <silent> tp :tabnext<cr>
-nnoremap <silent> to :tabprevious<cr>
-nnoremap <silent> tn :tabnew<cr>
+nnoremap <silent> <leader>tn :tabnew<cr>
+nnoremap <silent> <leader>tc :tabclose<cr>
 
 " split switching
 nnoremap <C-J> <C-W><C-J>
@@ -253,9 +263,7 @@ nnoremap <silent> <leader>i :Lines<cr>
 nnoremap <silent> <leader>d :bd<cr>
 
 " tab switching
-nnoremap <silent> tp :tabnext<cr>
-nnoremap <silent> to :tabprevious<cr>
-nnoremap <silent> tn :tabnew<cr>
+nnoremap <silent> <leader>t :tabnew<cr>
 
 " split switching
 nnoremap <C-J> <C-W><C-J>
@@ -271,9 +279,12 @@ nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-f>; :TmuxNavigatePrevious<cr>
 
+" markdown preview
+nnoremap <leader> mp :MarkdownPreview<cr>
+
 " zoom in/out
-noremap <C-i> <c-w>_ \| <c-w>\|
-noremap <C-o> <c-w>=
+nnoremap zi <c-w>_ \| <c-w>\|
+nnoremap zo <c-w>=
 
 let test#strategy = "vimux"
 
@@ -283,10 +294,11 @@ nmap j gj
 
 " open dropbox note
 map <leader>n :tabnew ~/Dropbox/notes/draft.md<cr>
-nmap <silent> t<C-n> :TestNearest<cr>
-nmap <silent> t<C-v> :TestFile<cr>
-nmap <silent> t<C-s> :TestSuite<cr>
-nmap <silent> t<C-l> :TestLast<cr nmap <silent> t<C-g> :TestVisit<cr>
+nmap <silent> tn :TestNearest<cr>
+nmap <silent> ts :TestSuite<cr>
+nmap <silent> tl :TestLast<cr>
+nmap <silent> tv :TestVisit<cr>
+nmap <silent> tf :TestFile<cr>
 
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<cr>:cw<cr><cr>

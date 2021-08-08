@@ -16,6 +16,7 @@ export ZSH=$HOME/.oh-my-zsh
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
+
 # .zshrc
 autoload -U promptinit; promptinit
 # prompt pure
@@ -95,15 +96,21 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+alias gad='git add .' # git add dot
+alias gms='git checkout master; git checkout main;' # git add dot
 alias zshconfig='nvim ~/tuang3142/dotfiles/zshrc'
 alias py='python3'
 alias rb='ruby'
 alias amend='git commit --amend'
 alias amendl='git commit --amend --no-verify' # amend lazy
 alias cl='clear'
-alias ide='tmux split-window -h -p 25; tmux split-window -v -p 50; tmux split-window -v -p 50'
+alias ide='tmux split-window -h -p 20; tmux split-window -v -p 40; tmux split-window -v -p 50'
 alias rmf='rm -rf'
 alias console='bin/rails console'
+alias sjk='bundle exec jekyll server'
+alias ref='SKIP_API=1 bin/boot_dev'
+alias reb='bundle exec bin/boot_api'
+alias krb='pkill -9 ruby; pkill -9 node; pkill -9 spring'
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
