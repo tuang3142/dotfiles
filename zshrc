@@ -112,7 +112,6 @@ alias ref='SKIP_API=1 bin/boot_dev'
 alias reb='bundle exec bin/boot_api'
 alias krb='pkill -9 ruby; pkill -9 node; pkill -9 spring'
 
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -135,7 +134,7 @@ export GPG_TTY=$(tty)
 export PATH="/usr/local/opt/m4/bin:$PATH"
 export PATH="/usr/local/opt/node@14/bin:$PATH"
 
-export FZF_DEFAULT_OPTS='
-  --color fg:188,bg:233,hl:103,fg+:222,bg+:234,hl+:104
-  --color info:183,prompt:110,spinner:107,pointer:167,marker:215
-'
+# export FZF_DEFAULT_OPTS='
+#   --color fg:188,bg:233,hl:103,fg+:222,bg+:234,hl+:104
+#   --color info:183,prompt:110,spinner:107,pointer:167,marker:215
+# '

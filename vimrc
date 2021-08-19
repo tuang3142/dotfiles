@@ -6,10 +6,17 @@ if has("autocmd")
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'nvie/vim-flake8'
+  autocmd FileType python map <buffer> <leader>py :call flake8#Flake8()<CR>
+Plug 'vim-python/python-syntax'
+  let g:python_highlight_all = 1
 Plug 'sirver/UltiSnips'
   let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
-  let g:UltiSnipsExpandTrigger="<tab>"
+  " let g:UltiSnipsExpandTrigger="<ta"
   let g:UltiSnipsEditSplit="horizontal"
+" Plug 'shinchu/lightline-gruvbox.vim'
+Plug 'gruvbox-community/gruvbox'
+  let g:gruvbox_contrast_dark="hard"
 Plug 'itchyny/lightline.vim'
   let g:lightline = {
   \ 'mode_map': {
@@ -25,10 +32,10 @@ Plug 'itchyny/lightline.vim'
     \ "\<C-s>": 'sb',
     \ 't': 't',
     \ },
-  \   'colorscheme': 'jellybeans',
+  \   'colorscheme': 'gruvbox',
   \   'active': {
   \      'left': [ [ 'mode', 'paste' ],
-  \                [ 'readonly', 'relativepath' ] ],
+  \                [ 'readonly', 'relativepath', 'modified' ] ],
   \      'right': [ ],
   \   },
   \ }
@@ -50,7 +57,7 @@ Plug 'preservim/nerdtree'
   map <C-m> :NERDTreeFind<cr>
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-  let g:fzf_preview_window = []
+  let g:fzf_preview_window = ['right:40%']
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-unimpaired'
@@ -72,13 +79,18 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'nanotech/jellybeans.vim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
+Plug 'chriskempson/base16-vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown'] }
+Plug 'xuhdev/vim-latex-live-preview'
+  let g:livepreview_previewer = 'Preview'
 Plug 'ycm-core/YouCompleteMe'
+  let g:ycm_use_ultisnips_completer = 0
+  let g:ycm_complete_in_comments = 1
+  let g:ycm_key_list_select_completion = ['<C-P>', '<Down>']
 Plug 'https://github.com/edkolev/tmuxline.vim'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'Yggdroot/indentLine'
   let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-  let g:indentLine_enabled = 0
 call plug#end()
 
 set noshowmode " hide mode, lightline does the jobs
@@ -102,7 +114,7 @@ augroup CursorLine
     au WinLeave * setlocal nocursorline
 augroup END
 set cursorline
-set colorcolumn=100 " line limit
+set colorcolumn=80 " line limit
 set number
 set relativenumber
 set autoindent
@@ -171,7 +183,11 @@ set noequalalways
 
 " color scheme
 set background=dark
-colorscheme jellybeans
+" colorscheme jellybeans
+colorscheme gruvbox
+" colorscheme base16-gruvbox-dark-hard
+" colorscheme base16-tomorrow-night
+" colorscheme base16-default-dark
 
 " render whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
@@ -189,6 +205,9 @@ runtime! macros/matchit.vim
 " source "~tuang/dotfiles/vim/mapping.vim"
 let mapleader = "'"
 
+vnoremap <leader>c "*y
+nnoremap <C-d> 30j
+nnoremap <C-u> 30k
 nmap <leader>ga :Git add %<cr>
 nmap <leader>gb :Git blame<cr>
 nmap <leader>gs :Git<cr>
@@ -280,7 +299,7 @@ nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-f>; :TmuxNavigatePrevious<cr>
 
 " markdown preview
-nnoremap <leader> mp :MarkdownPreview<cr>
+" nnoremap <leader> mp :MarkdownPreview<cr>
 
 " zoom in/out
 nnoremap zi <c-w>_ \| <c-w>\|
@@ -303,3 +322,5 @@ nmap <silent> tf :TestFile<cr>
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<cr>:cw<cr><cr>
 nnoremap <leader>a :Ag<SPACE>
+
+" todo: byebug marco, comment marco
