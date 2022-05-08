@@ -86,8 +86,8 @@ nnoremap zi <c-w>_ \| <c-w>\|
 nnoremap zo <c-w>=
 
 " nerdtree mapping
-" nnoremap <C-n> :NERDTreeToggle<cr>
-" nnoremap <cr> :NERDTreeFind<cr>
+nnoremap <C-n> :NERDTreeToggle<cr>
+nnoremap <cr> :NERDTreeFind<cr>
 
 " jk when wrapper on
 nmap k gk
