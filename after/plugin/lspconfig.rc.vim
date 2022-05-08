@@ -26,16 +26,22 @@ local on_attach = function(client, bufnr)
   --   vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
   --   vim.api.nvim_command [[augroup END]]
   -- end
-
-  -- autocompletion
-  require'completion'.on_attach(client, bufnr)
-
-  -- icons
 end
+
+-- Set up completion using nvim_cmp with LSP source
+local capabilities = require('cmp_nvim_lsp').update_capabilities(
+  vim.lsp.protocol.make_client_capabilities()
+)
 
 -- TypeScript
 nvim_lsp.tsserver.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+nvim_lsp.flow.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
 }
 
 nvim_lsp.diagnosticls.setup {
@@ -95,15 +101,3 @@ nvim_lsp.diagnosticls.setup {
     }
   }
 }
-
--- icon
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = true,
-    -- This sets the spacing and the prefix, obviously.
-    virtual_text = {
-      spacing = 4,
-      prefix = ''
-    }
-  }
-)

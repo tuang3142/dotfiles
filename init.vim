@@ -7,7 +7,7 @@ endif
 
 set noshowmode " hide mode, lightline does the jobs
 set autowrite  " Automatically :write before running commands
-" set autoread
+set autoread
 set hidden
 set noswapfile
 set nobackup

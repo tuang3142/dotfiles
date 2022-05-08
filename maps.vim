@@ -24,12 +24,6 @@ nnoremap <leader>w :w <cr>
 nnoremap <leader>q :q! <cr>
 nnoremap <leader>Q :wqa! <cr>
 
-" fzf shortcut
-nnoremap <silent> <leader>f :Files<cr>
-nnoremap <silent> <leader>b :Buffers<cr>
-nnoremap <silent> <leader>h :History<cr>
-nnoremap <silent> <leader>i :Lines<cr>
-
 nnoremap <silent> <leader>d :bd<cr>
 
 " tab switching
@@ -85,10 +79,6 @@ nnoremap <silent> <C-f>; :TmuxNavigatePrevious<cr>
 nnoremap zi <c-w>_ \| <c-w>\|
 nnoremap zo <c-w>=
 
-" nerdtree mapping
-nnoremap <C-n> :NERDTreeToggle<cr>
-nnoremap <cr> :NERDTreeFind<cr>
-
 " jk when wrapper on
 nmap k gk
 nmap j gj
@@ -108,3 +98,8 @@ set completeopt=menuone,noinsert,noselect
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+nnoremap <silent> <leader>f :GFiles<cr>
+nnoremap <silent> <leader>b :Buffers<cr>
+nnoremap <silent> <leader>h :History<cr>
+nnoremap <silent> <leader>i :Lines<cr>

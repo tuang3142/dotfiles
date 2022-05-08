@@ -1,10 +1,9 @@
-- make mapping inuitive
-- explore go to def, go to Doc, go to ref, more mapping for lsp
-- config tmux
-- take a look at minh dot, luong dot, chris @ thoughtbot
-- fix nerd tree, or replace it
 - fix grep
-- fix tabline
+- config tmux
+- make mapping inuitive
+- take a look at minh dot, luong dot, chris @ thoughtbot
+- explore go to def, go to Doc, go to ref, more mapping for lsp
+- fix lspsaga
 
 prep:
 
