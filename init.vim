@@ -91,10 +91,6 @@ endif
 
 set noequalalways
 
-" color scheme
-" set background=dark
-" colorscheme gruvbox
-
 " render whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
@@ -121,5 +117,6 @@ if exists("&termguicolors") && exists("&winblend")
   set pumblend=5
   set background=dark
   colorscheme gruvbox
+  " colorscheme NeoSolarized
 endif
 " }

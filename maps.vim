@@ -86,8 +86,8 @@ nnoremap zi <c-w>_ \| <c-w>\|
 nnoremap zo <c-w>=
 
 " nerdtree mapping
-map <C-n> :NERDTreeToggle<cr>
-map <cr> :NERDTreeFind<cr>
+" nnoremap <C-n> :NERDTreeToggle<cr>
+" nnoremap <cr> :NERDTreeFind<cr>
 
 " jk when wrapper on
 nmap k gk
@@ -103,5 +103,8 @@ nmap <silent> tf :TestFile<cr>
 nnoremap K :grep! "\b<C-R><C-W>\b"<cr>:cw<cr><cr>
 nnoremap <leader>a :Ag<SPACE>
 
-" show hover doc
-nnoremap <silent> <leader>k :Lspsaga hover_doc<CR>
+" autocompletion
+set completeopt=menuone,noinsert,noselect
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"

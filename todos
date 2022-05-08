@@ -1,10 +1,16 @@
-- config after/plug
-- config auto complete
-- config tree sitter
 - make mapping inuitive
 - explore go to def, go to Doc, go to ref, more mapping for lsp
-- config devicon
 - config tmux
 - take a look at minh dot, luong dot
-- consider solarized
 - fix nerd tree, or replace it
+- fix grep
+- fix tabline
+
+prep:
+
+brew
+fzf
+vim plug
+lua
+
+https://blog.inkdrop.app/how-to-set-up-neovim-0-5-modern-plugins-lsp-treesitter-etc-542c3d9c9887

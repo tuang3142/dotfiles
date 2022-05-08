@@ -1,9 +1,14 @@
 call plug#begin(stdpath('data') . '/plugged')
 
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'hoob3rt/lualine.nvim'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'neovim/nvim-lspconfig'
 " Plug 'skwp/greplace.vim'
+Plug 'overcache/NeoSolarized'
+  let g:neosolarized_visibility='high'
+  let g:neosolarized_contrast='high'
 Plug 'gruvbox-community/gruvbox'
   let g:gruvbox_contrast_dark='hard'
 Plug 'preservim/nerdtree'
@@ -13,6 +18,9 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
   let g:fzf_preview_window = ['right:40%']
+" Plug 'nvim-lua/popup.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
 Plug 'tpope/vim-commentary'
 " Plug 'tpope/vim-rails'
 " Plug 'tpope/vim-unimpaired'
