@@ -1,9 +1,12 @@
-- fix grep
+- fix grep, ag search
 - config tmux
 - make mapping inuitive
 - take a look at minh dot, luong dot, chris @ thoughtbot
 - explore go to def, go to Doc, go to ref, more mapping for lsp
 - fix lspsaga
+- refactor on save
+- read about lsp, wtf is this and why do i need it
+
 
 prep:
 
