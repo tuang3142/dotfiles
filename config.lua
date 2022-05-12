@@ -11,10 +11,9 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "base16-gruvbox-dark-hard"
--- lvim.colorscheme = "onedarker"
+lvim.colorscheme = "base16-gruvbox-dark-pale"
 -- to disable icons and use a minimalist setup, uncomment the following
--- lvim.use_icons = fonedarkeralse
+lvim.use_icons = false
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -148,16 +147,15 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.plugins = {
   { "christoomey/vim-tmux-navigator" },
   { "RRethy/nvim-base16" },
-  -- { "Yggdroot/indentLine" },
+  { "Yggdroot/indentLine" },
   { "tpope/vim-fugitive" },
+  { "sevko/vim-nand2tetris-syntax" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
 -- }
--- vim.cmd("let g:tmux_navigator_no_mappings=1")
 vim.cmd("let g:tmux_navigator_save_on_switch=2")
 vim.cmd("let g:tmux_navigator_disable_when_zoomed=1")
-vim.cmd("set nohlsearch")
--- vim.cmd("let g:indentLine_char_list = ['|', '¦', '┆', '┊']")
+vim.cmd("set relativenumber")
