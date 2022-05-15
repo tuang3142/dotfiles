@@ -1,3 +1,7 @@
+" RULES
+" leader: command
+" ctr: hold and repeat
+
 let mapleader = "'"
 
 vnoremap <leader>c "*y
@@ -7,9 +11,6 @@ nmap <leader>ga :Git add %<cr>
 nmap <leader>gb :Git blame<cr>
 nmap <leader>gs :Git<cr>
 nmap <leader>gr :Gread<cr>
-" access vimrc
-nnoremap <leader>tv :tabnew ~/tuang/dotfiles/vimrc<cr>
-nnoremap <leader>sv :source ~/tuang/dotfiles/vimrc<cr>
 
 nnoremap <leader>l :set hlsearch! hlsearch?<cr>
 map <leader>us :UltiSnipsEdit<cr>
@@ -35,22 +36,16 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-nnoremap <leader>vv <C-W>v
-nnoremap <leader>vs <C-W>s
+nnoremap sv <C-W>v
+nnoremap ss <C-W>s
 
-nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
-nnoremap <silent> <C-f>; :TmuxNavigatePrevious<cr>
-
-" nmap <leader>ga :Git add %<cr>
+nmap <leader>ga :Git add %<cr>
 nmap <leader>gb :Git blame<cr>
 nmap <leader>gs :Git<cr>
 nmap <leader>gr :Gread<cr>
 nnoremap <leader>l :set hlsearch! hlsearch?<cr>
-nnoremap <leader>t :set relativenumber! relativenumber?<cr>
-map <leader>us :UltiSnipsEdit<cr>
+" nnoremap <leader>t :set relativenumber! relativenumber?<cr>
+" map <leader>us :UltiSnipsEdit<cr>
 map <leader>e :e!<cr>
 map <leader>E :bufdo e!<cr>
 map <leader>I :PlugInstall<cr>
@@ -69,12 +64,6 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <leader>vv <C-W>v
 nnoremap <leader>vs <C-W>s
 
-nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
-nnoremap <silent> <C-f>; :TmuxNavigatePrevious<cr>
-
 " zoom in/out
 nnoremap zi <c-w>_ \| <c-w>\|
 nnoremap zo <c-w>=
@@ -82,12 +71,6 @@ nnoremap zo <c-w>=
 " jk when wrapper on
 nmap k gk
 nmap j gj
-
-nmap <silent> tn :TestNearest<cr>
-nmap <silent> ts :TestSuite<cr>
-nmap <silent> tl :TestLast<cr>
-nmap <silent> tv :TestVisit<cr>
-nmap <silent> tf :TestFile<cr>
 
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<cr>:cw<cr><cr>
@@ -99,7 +82,31 @@ set completeopt=menuone,noinsert,noselect
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-nnoremap <silent> <leader>f :GFiles<cr>
-nnoremap <silent> <leader>b :Buffers<cr>
-nnoremap <silent> <leader>h :History<cr>
-nnoremap <silent> <leader>i :Lines<cr>
+" TODO: vim test
+" nmap <silent> <leader>tn :TestNearest<cr>
+" nmap <silent> <leader>ts :TestSuite<cr>
+" nmap <silent> <leader>tl :TestLast<cr>
+" nmap <silent> <leader>tv :TestVisit<cr>
+" nmap <silent> <leader>tf :TestFile<cr>
+
+" fzf
+nnoremap <silent> <leader>ff :Files<cr>
+nnoremap <silent> <leader>fg :GFiles<cr>
+nnoremap <silent> <leader>fb :Buffers<cr>
+nnoremap <silent> <leader>fh :History<cr>
+nnoremap <silent> <leader>fl :Lines<cr>
+
+" nerd tree
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>nr :NERDTreeRefreshRoot<CR>
+nnoremap <cr> :NERDTreeFind<CR>
+
+" tmux navigator
+nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
+nnoremap <silent> <C-f>; :TmuxNavigatePrevious<cr>
+
+" source settings
+noremap <silent> <leader>ss :source ~/.config/nvim/init.vim<cr>

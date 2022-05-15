@@ -1,11 +1,12 @@
 - fix grep, ag search
 - config tmux
-- make mapping inuitive
-- take a look at minh dot, luong dot, chris @ thoughtbot
-- explore go to def, go to Doc, go to ref, more mapping for lsp
-- fix lspsaga
+- take a look at minh dot, chris @ thoughtbot
 - refactor on save
-- read about lsp, wtf is this and why do i need it
+- go to reference, to to def, go to implement
+- diagnostics
+- nerd tree more like the otehr tree (open in selected pane)
+- make mapping inuitive
+- testing
 
 
 prep:
