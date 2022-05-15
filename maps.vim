@@ -36,8 +36,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-nnoremap sv <C-W>v
-nnoremap ss <C-W>s
+" nnoremap sv <C-W>v
+" nnoremap ss <C-W>s
 
 nmap <leader>ga :Git add %<cr>
 nmap <leader>gb :Git blame<cr>
@@ -97,7 +97,7 @@ nnoremap <silent> <leader>fh :History<cr>
 nnoremap <silent> <leader>fl :Lines<cr>
 
 " nerd tree
-nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>nn :NERDTreeToggle<CR>
 nnoremap <leader>nr :NERDTreeRefreshRoot<CR>
 nnoremap <cr> :NERDTreeFind<CR>
 
@@ -110,3 +110,6 @@ nnoremap <silent> <C-f>; :TmuxNavigatePrevious<cr>
 
 " source settings
 noremap <silent> <leader>ss :source ~/.config/nvim/init.vim<cr>
+
+" vim plug
+noremap <silent> <leader>pi :PlugInstall<cr>
