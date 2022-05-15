@@ -11,6 +11,7 @@ nmap <leader>ga :Git add %<cr>
 nmap <leader>gb :Git blame<cr>
 nmap <leader>gs :Git<cr>
 nmap <leader>gr :Gread<cr>
+nmap <leader>gcm :Git commit -m "
 
 nnoremap <leader>l :set hlsearch! hlsearch?<cr>
 map <leader>us :UltiSnipsEdit<cr>

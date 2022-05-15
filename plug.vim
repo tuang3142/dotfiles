@@ -1,6 +1,5 @@
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 " Plug 'hrsh7th/cmp-nvim-lsp'
 " Plug 'hrsh7th/cmp-buffer'
@@ -24,5 +23,5 @@ Plug 'christoomey/vim-tmux-navigator'
 " Plug 'tpope/vim-cucumber'
 " Plug 'tpope/vim-endwise'
 " Plug 'vim-test/vim-test'
-
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
