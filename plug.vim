@@ -22,6 +22,12 @@ Plug 'christoomey/vim-tmux-navigator'
 " Plug 'tpope/vim-unimpaired'
 " Plug 'tpope/vim-cucumber'
 " Plug 'tpope/vim-endwise'
-" Plug 'vim-test/vim-test'
+Plug 'preservim/vimux'
+Plug 'vim-test/vim-test'
+  nmap <silent> tn :TestNearest<CR>
+  nmap <silent> tf :TestFile<CR>
+  nmap <silent> ts :TestSuite<CR>
+  nmap <silent> tl :TestLast<CR>
+  nmap <silent> tv :TestVisit<CR>
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
