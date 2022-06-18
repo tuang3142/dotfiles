@@ -162,10 +162,7 @@ lvim.lsp.automatic_servers_installation = true
 -- Additional Plugins
 lvim.plugins = {
   { "sainnhe/gruvbox-material" },
-  { "lifepillar/vim-solarized8" },
-  { "ishan9299/nvim-solarized-lua" },
   { "christoomey/vim-tmux-navigator" },
-  { "RRethy/nvim-base16" },
   { "tpope/vim-fugitive" },
   { "sevko/vim-nand2tetris-syntax" },
   { "tpope/vim-repeat" },

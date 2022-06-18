@@ -1,4 +1,5 @@
 - grep: find under cursor, better quickfix window
 - keymap rules
  * leader ' or space?
- - setup script for new comp
+- setup script for new comp
+- timpope idol package

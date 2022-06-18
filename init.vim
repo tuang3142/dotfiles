@@ -6,6 +6,7 @@ if has("autocmd")
 endif
 
 " set noshowmode " hide mode, lightline does the jobs
+" TODO: auto refresh files
 set autowrite  " Automatically :write before running commands
 set autoread
 set hidden
@@ -22,8 +23,7 @@ set tabstop=2
 set softtabstop=2
 set expandtab
 set shiftwidth=2
-set ruler
-set nohlsearch
+set hlsearch
 
 " show incomplete commands
 set showcmd
@@ -48,18 +48,18 @@ function! InsertTabWrapper()
 endfunction
 
 " " Use ag over grep
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+" if executable('ag')
+"   " Use Ag over Grep
+"   set grepprg=ag\ --nogroup\ --nocolor
 
-  " Use ag in fzf for listing files. Lightning fast and respects .gitignore
-  let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
+"   " Use ag in fzf for listing files. Lightning fast and respects .gitignore
+"   let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
 
-  if !exists(":Ag")
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-    nnoremap \ :Ag<SPACE>
-  endif
-endif
+"   if !exists(":Ag")
+"     command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+"     nnoremap \ :Ag<SPACE>
+"   endif
+" endif
 
 set noequalalways
 
@@ -70,6 +70,8 @@ let test#strategy = "vimux"
 
 " PLUGINS {
 call plug#begin(stdpath('data') . '/plugged')
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'tpope/vim-abolish'
 Plug 'sunjon/Shade.nvim'
 Plug 'sainnhe/gruvbox-material'
 Plug 'preservim/nerdtree'
@@ -77,18 +79,13 @@ Plug 'gruvbox-community/gruvbox'
 " Plug 'hrsh7th/cmp-nvim-lsp'
 " Plug 'hrsh7th/cmp-buffer'
 " Plug 'hrsh7th/nvim-cmp'
-" Plug 'ishan9299/nvim-solarized-lua'
-" Plug 'lunarvim/onedarker.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'edkolev/tmuxline.vim'
-" Plug 'nvim-lualine/lualine.nvim'
-Plug 'LunarVim/onedarker.nvim'
-Plug 'itchyny/lightline.vim'
-  let g:lightline = {
-        \ 'colorscheme': 'gruvbox_material',
-        \ }
+" Plug 'itchyny/lightline.vim'
+"   let g:lightline = {
+"         \ 'colorscheme': 'gruvbox_material',
+"         \ }
 " Plug 'neovim/nvim-lspconfig'
-" Plug 'RRethy/nvim-base16'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
@@ -99,23 +96,18 @@ Plug 'sevko/vim-nand2tetris-syntax'
 Plug 'christoomey/vim-tmux-navigator'
 " Plug 'glepnir/lspsaga.nvim'
 " Plug 'skwp/greplace.vim'
-" Plug 'tpope/vim-rails'
 " Plug 'tpope/vim-unimpaired'
-" Plug 'tpope/vim-cucumber'
-" Plug 'tpope/vim-endwise'
 Plug 'preservim/vimux'
 Plug 'vim-test/vim-test'
-  nmap <silent> tn :TestNearest<CR>
-  nmap <silent> tf :TestFile<CR>
-  nmap <silent> ts :TestSuite<CR>
-  nmap <silent> tl :TestLast<CR>
-  nmap <silent> tv :TestVisit<CR>
+" TODO
+" Plug 'folke/twilight.nvim'
 call plug#end()
 " }
 " -------
 
 " RULES {
-let mapleader = "'"
+nnoremap <SPACE> <Nop>
+let mapleader = " "
 
 vnoremap <leader>c "*y
 nnoremap <C-d> 30j
@@ -126,11 +118,9 @@ nmap <leader>gs :Git<cr>
 nmap <leader>gr :Gread<cr>
 nmap <leader>gcm :Git commit -m "
 
-nnoremap <leader>l :set hlsearch! hlsearch?<cr>
 map <leader>us :UltiSnipsEdit<cr>
 map <leader>e :e!<cr>
 map <leader>E :bufdo e!<cr>
-map <leader>I :PlugInstall<cr>
 nnoremap <leader>x :x <cr>
 
 "find and replace
@@ -157,12 +147,12 @@ nmap <leader>ga :Git add %<cr>
 nmap <leader>gb :Git blame<cr>
 nmap <leader>gs :Git<cr>
 nmap <leader>gr :Gread<cr>
-nnoremap <leader>l :set hlsearch! hlsearch?<cr>
+" toggle hlsearch
+nnoremap <leader>h :set hlsearch! hlsearch?<cr>
 " nnoremap <leader>t :set relativenumber! relativenumber?<cr>
 " map <leader>us :UltiSnipsEdit<cr>
 map <leader>e :e!<cr>
 map <leader>E :bufdo e!<cr>
-map <leader>I :PlugInstall<cr>
 nnoremap <leader>x :x <cr>
 
 nnoremap <silent> <leader>d :bd<cr>
@@ -197,18 +187,19 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " TODO: vim test
-" nmap <silent> <leader>tn :TestNearest<cr>
-" nmap <silent> <leader>ts :TestSuite<cr>
-" nmap <silent> <leader>tl :TestLast<cr>
-" nmap <silent> <leader>tv :TestVisit<cr>
-" nmap <silent> <leader>tf :TestFile<cr>
+nmap <silent> <leader>tn :TestNearest<cr>
+nmap <silent> <leader>ts :TestSuite<cr>
+nmap <silent> <leader>tl :TestLast<cr>
+nmap <silent> <leader>tv :TestVisit<cr>
+nmap <silent> <leader>tf :TestFile<cr>
 
 " fzf
-nnoremap <silent> <leader>ff :Files<cr>
-nnoremap <silent> <leader>fg :GFiles<cr>
-nnoremap <silent> <leader>fb :Buffers<cr>
-nnoremap <silent> <leader>fh :History<cr>
-nnoremap <silent> <leader>fl :Lines<cr>
+" TODO: search todo, search like telescope
+nnoremap <silent> <leader>f :Files<cr>
+nnoremap <silent> <leader>i :GFiles<cr>
+nnoremap <silent> <leader>b :Buffers<cr>
+nnoremap <silent> <leader>r :History<cr>
+nnoremap <silent> <leader>l :Lines<cr>
 
 " nerd tree
 nnoremap <leader>nn :NERDTreeToggle<CR>
@@ -224,11 +215,9 @@ nnoremap <silent> <C-f>; :TmuxNavigatePrevious<cr>
 
 " source settings
 noremap <silent> <leader>ss :source ~/.config/nvim/init.vim<cr>
-
-" vim plug
-noremap <silent> <leader>pi :PlugInstall<cr>
 " }
 " -------
+
 
 " VIEW {
 if (has('nvim'))
@@ -243,11 +232,10 @@ if exists("&termguicolors") && exists("&winblend")
   set wildoptions=pum
   set pumblend=5
   set background=dark
-  colorscheme gruvbox
+  let g:gruvbox_material_background = 'hard'
+  let g:gruvbox_material_better_performance = 1
+  colorscheme gruvbox-material
 endif
-
-set number
-set relativenumber
 
 " change shape of cursor bwt modes
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -256,5 +244,10 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 " render whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
+
+" misc
+set number
+set relativenumber
+set cursorline
 " }
 " -------
