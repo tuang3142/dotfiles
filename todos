@@ -1,19 +1,2 @@
-- fix grep, ag search
-- config tmux
-- take a look at minh dot, chris @ thoughtbot
-- refactor on save
-- go to reference, to to def, go to implement
-- diagnostics
-- nerd tree more like the otehr tree (open in selected pane)
-- make mapping inuitive
-- testing
-
-
-prep:
-
-brew
-fzf
-vim plug
-lua
-
-https://blog.inkdrop.app/how-to-set-up-neovim-0-5-modern-plugins-lsp-treesitter-etc-542c3d9c9887
+- grep: find under cursor, better quickfix window
+- 

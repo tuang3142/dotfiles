@@ -1,13 +1,22 @@
 call plug#begin(stdpath('data') . '/plugged')
-
+Plug 'sainnhe/gruvbox-material'
 Plug 'preservim/nerdtree'
+Plug 'gruvbox-community/gruvbox'
 " Plug 'hrsh7th/cmp-nvim-lsp'
 " Plug 'hrsh7th/cmp-buffer'
 " Plug 'hrsh7th/nvim-cmp'
+" Plug 'ishan9299/nvim-solarized-lua'
+" Plug 'lunarvim/onedarker.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'hoob3rt/lualine.nvim'
+Plug 'edkolev/tmuxline.vim'
+" Plug 'nvim-lualine/lualine.nvim'
+Plug 'LunarVim/onedarker.nvim'
+Plug 'itchyny/lightline.vim'
+  let g:lightline = {
+        \ 'colorscheme': 'gruvbox_material',
+        \ }
 " Plug 'neovim/nvim-lspconfig'
-Plug 'RRethy/nvim-base16'
+" Plug 'RRethy/nvim-base16'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'

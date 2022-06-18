@@ -10,7 +10,7 @@ if exists("&termguicolors") && exists("&winblend")
   set wildoptions=pum
   set pumblend=5
   set background=dark
-  colorscheme base16-gruvbox-dark-pale
+  colorscheme gruvbox
 endif
 
 " highlight current line only on focused window

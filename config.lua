@@ -11,18 +11,24 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = false
--- lvim.colorscheme = "base16-gruvbox-dark-hard"
--- lvim.colorscheme = "onedarker"
+-- vim.cmd("let g:gruvbox_material_background = 'hard'")
+-- vim.cmd("let g:gruvbox_material_enable_bold=1")
+-- vim.cmd("let g:gruvbox_material_enable_italic=1")
+-- vim.cmd("let g:gruvbox_material_foreground='original'")
+-- lvim.colorscheme = "gruvbox-material"
 lvim.colorscheme = "gruvbox"
--- vim.cmd 'colorscheme material'
--- vim.g.material_style = "deep ocean"
+
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
--- lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+-- lvim.keys.normal_mode["<leader>w"] = false
+lvim.keys.normal_mode["<leader>a"] = ":wa<cr>"
+lvim.keys.normal_mode["<leader>x"] = ":x<cr>"
+lvim.keys.normal_mode["<leader>ga"] = ":Git add %<cr>"
+lvim.keys.normal_mode["<leader>gm"] = ':Git commit -m "'
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = false
 -- edit a default keymapping
@@ -50,9 +56,24 @@ lvim.leader = "space"
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
--- lvim.builtin.onedarker.active = true
+-- lvim.builtin.lualine.options = { theme = 'gruvbox-material' }
+-- lvim.builtin.nvimtree.setup.view = {
+--   width = 100,
+--   number = true,
+--   relativenumber = true,
+--   preserve_window_proportions = true,
+-- }
+lvim.builtin.nvimtree.setup.view.width = 100
+lvim.builtin.nvimtree.setup.view.number = true
+lvim.builtin.nvimtree.setup.view.relativenumber = true
+lvim.builtin.nvimtree.setup.view.preserve_window_proportions = true
+lvim.builtin.nvimtree.setup.filters = {}
+-- lvim.builtin.bufferline.active = false
+
+
+
+
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -140,11 +161,13 @@ lvim.lsp.automatic_servers_installation = true
 
 -- Additional Plugins
 lvim.plugins = {
+  { "sainnhe/gruvbox-material" },
+  { "lifepillar/vim-solarized8" },
+  { "ishan9299/nvim-solarized-lua" },
   { "christoomey/vim-tmux-navigator" },
   { "RRethy/nvim-base16" },
   { "tpope/vim-fugitive" },
   { "sevko/vim-nand2tetris-syntax" },
-  -- { "lukas-reineke/indent-blankline.nvim" },
   { "tpope/vim-repeat" },
   {
     "tpope/vim-surround",
@@ -159,12 +182,23 @@ lvim.plugins = {
   { "vim-test/vim-test" },
   { "junegunn/fzf" },
   { "junegunn/fzf.vim" },
-  { "ishan9299/nvim-solarized-lua" },
   { "folke/trouble.nvim" },
   { 'lukas-reineke/indent-blankline.nvim' },
   { 'gruvbox-community/gruvbox' },
-  { 'marko-cerovac/material.nvim' }
+  { 'marko-cerovac/material.nvim' },
+  { 'sunjon/shade.nvim' },
+  { 'folke/twilight.nvim' }
 }
+
+require 'shade'.setup({
+  overlay_opacity = 50,
+  opacity_step = 1,
+  keys = {
+    brightness_up   = '<C-Up>',
+    brightness_down = '<C-Down>',
+    toggle          = '<Leader>s',
+  }
+})
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
@@ -176,15 +210,21 @@ vim.cmd("set relativenumber")
 vim.cmd("nnoremap <silent><cr> :NvimTreeFindFile<cr>")
 vim.cmd("nnoremap <silent>sl :e src/config/local.json<cr>")
 vim.cmd("nnoremap <silent>sp :e package.json<cr>")
+vim.cmd("runtime ./plug.vim")
+-- vim.cmd("nnoremap <leader>R :%s/\<<C-r><C-w>\>//g<Left><Left>")
+-- vim.cmd("nnoremap <leader>w :wa <cr>")
 vim.cmd("set wrap linebreak")
-vim.cmd("nmap tn :TestNearest<CR>")
-vim.cmd("nmap  tf :TestFile<CR>")
-vim.cmd("nmap  tl :TestLast<CR>")
+vim.cmd("nmap tn :wa<cr>:TestNearest<CR>")
+vim.cmd("nmap tf :wa<cr>:TestFile<CR>")
+vim.cmd("nmap tl :wa<cr>:TestLast<CR>")
 vim.cmd("let gruvbox_contrast_dark='hard'")
 vim.cmd("let gruvbox_sign_column='none'")
 vim.cmd("let gruvbox_invert_selection='false'")
 vim.cmd("let test#strategy = 'vimux'")
-vim.cmd("set nohlsearch")
+
+-- jk when wrapper on
+vim.cmd("nmap k gk")
+vim.cmd("nmap j gj")
 
 require("indent_blankline").setup {
   space_char_blankline = " ",
@@ -204,7 +244,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   -- delay update diagnostics
   update_in_insert = false,
   -- display_diagnostic_autocmds = { "InsertLeave" },
-}
+ }
 )
 
 -- Use which-key to add extra bindings with the leader-key prefix
@@ -217,4 +257,25 @@ lvim.builtin.which_key.mappings["t"] = {
   q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
+}
+
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  {
+    command = "prettier",
+    args = { "--print-width", "100" },
+    filetypes = { "typescript", "typescriptreact", "javascript" },
+  },
+}
+
+local dropdown_theme = { theme = "dropdown" }
+
+require'telescope'.setup {
+  pickers = {
+    find_files = dropdown_theme,
+    git_files = dropdown_theme,
+    oldfiles = dropdown_theme,
+    live_grep = dropdown_theme,
+    buffers = dropdown_theme,
+  },
 }
