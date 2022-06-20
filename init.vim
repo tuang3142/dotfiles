@@ -70,8 +70,10 @@ let test#strategy = "vimux"
 
 " PLUGINS {
 call plug#begin(stdpath('data') . '/plugged')
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kdheepak/tabline.nvim'
 " Plug 'kristijanhusak/defx-git'
 Plug 'kristijanhusak/defx-icons'
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -80,15 +82,14 @@ Plug 'tpope/vim-abolish'
 Plug 'sunjon/Shade.nvim'
 Plug 'sainnhe/gruvbox-material'
 Plug 'gruvbox-community/gruvbox'
+  let gruvbox_contrast_dark='hard'
+  let gruvbox_sign_column='none'
+  let gruvbox_invert_selection='false'
 " Plug 'hrsh7th/cmp-nvim-lsp'
 " Plug 'hrsh7th/cmp-buffer'
 " Plug 'hrsh7th/nvim-cmp'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'edkolev/tmuxline.vim'
-" Plug 'itchyny/lightline.vim'
-"   let g:lightline = {
-"         \ 'colorscheme': 'gruvbox_material',
-"         \ }
 " Plug 'neovim/nvim-lspconfig'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
@@ -109,7 +110,7 @@ call plug#end()
 " }
 " -------
 
-" RULES {
+" MAPS {
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 
@@ -123,8 +124,8 @@ nmap <leader>gr :Gread<cr>
 nmap <leader>gcm :Git commit -m "
 
 map <leader>us :UltiSnipsEdit<cr>
-map <leader>e :e!<cr>
-map <leader>E :bufdo e!<cr>
+" map <leader>e :e!<cr>
+" map <leader>E :bufdo e!<cr>
 nnoremap <leader>x :x <cr>
 
 "find and replace
@@ -214,6 +215,11 @@ nnoremap <silent> <C-f>; :TmuxNavigatePrevious<cr>
 
 " source settings
 noremap <silent> <leader>ss :source ~/.config/nvim/init.vim<cr>
+noremap <silent> <leader>sc :e ~/.config/nvim/init.vim<cr>
+
+" nvim tree
+nnoremap <silent> <cr> :NvimTreeFindFile<cr>
+nnoremap <silent> <leader>e :NvimTreeToggle<cr>
 " }
 " -------
 
@@ -231,9 +237,10 @@ if exists("&termguicolors") && exists("&winblend")
   set wildoptions=pum
   set pumblend=5
   set background=dark
-  let g:gruvbox_material_background = 'hard'
-  let g:gruvbox_material_better_performance = 1
-  colorscheme gruvbox-material
+  " let g:gruvbox_material_background = 'hard'
+  " let g:gruvbox_material_better_performance = 1
+  " colorscheme gruvbox-material
+  colorscheme gruvbox
 endif
 
 " change shape of cursor bwt modes
