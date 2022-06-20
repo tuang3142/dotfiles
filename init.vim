@@ -70,11 +70,15 @@ let test#strategy = "vimux"
 
 " PLUGINS {
 call plug#begin(stdpath('data') . '/plugged')
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
+" Plug 'kristijanhusak/defx-git'
+Plug 'kristijanhusak/defx-icons'
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'tpope/vim-abolish'
 Plug 'sunjon/Shade.nvim'
 Plug 'sainnhe/gruvbox-material'
-Plug 'preservim/nerdtree'
 Plug 'gruvbox-community/gruvbox'
 " Plug 'hrsh7th/cmp-nvim-lsp'
 " Plug 'hrsh7th/cmp-buffer'
@@ -200,11 +204,6 @@ nnoremap <silent> <leader>i :GFiles<cr>
 nnoremap <silent> <leader>b :Buffers<cr>
 nnoremap <silent> <leader>r :History<cr>
 nnoremap <silent> <leader>l :Lines<cr>
-
-" nerd tree
-nnoremap <leader>nn :NERDTreeToggle<CR>
-nnoremap <leader>nr :NERDTreeRefreshRoot<CR>
-nnoremap <cr> :NERDTreeFind<CR>
 
 " tmux navigator
 nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
