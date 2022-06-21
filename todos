@@ -1,11 +1,13 @@
-- grep: find under cursor, better quickfix window
-- keymap rules
- * leader ' or space?
-- setup script for new comp
-- timpope idol package
-- tmux dim (like shade)
 - fzf highlight
+- hunk view on side (fugitive powered)
+
 - auto format
 - lsp prettier
+
+- grep: find under cursor, better quickfix window
+
+- timpope idol package
+- tmux dim (like shade)
 - minialize dot files
-- hunk view on side
+
+- setup script for new laptop (laptop.sh)
