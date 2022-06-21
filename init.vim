@@ -70,6 +70,9 @@ let test#strategy = "vimux"
 
 " PLUGS {
 call plug#begin(stdpath('data') . '/plugged')
+" Plug 'folke/which-key.nvim'
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'folke/trouble.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
@@ -121,7 +124,7 @@ nmap <leader>ga :Git add %<cr>
 nmap <leader>gb :Git blame<cr>
 nmap <leader>gs :Git<cr>
 nmap <leader>gr :Gread<cr>
-nmap <leader>gcm :Git commit -m "
+nmap <leader>gcm :Git commit -m '
 
 map <leader>us :UltiSnipsEdit<cr>
 " map <leader>e :e!<cr>
@@ -153,7 +156,7 @@ nmap <leader>gb :Git blame<cr>
 nmap <leader>gs :Git<cr>
 nmap <leader>gr :Gread<cr>
 " toggle hlsearch
-nnoremap <leader>h :set hlsearch! hlsearch?<cr>
+nnoremap <leader>hh :set hlsearch! hlsearch?<cr>
 " nnoremap <leader>t :set relativenumber! relativenumber?<cr>
 " map <leader>us :UltiSnipsEdit<cr>
 map <leader>e :e!<cr>
@@ -192,11 +195,11 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " TODO: vim test
-nmap <silent> <leader>tn :TestNearest<cr>
-nmap <silent> <leader>ts :TestSuite<cr>
-nmap <silent> <leader>tl :TestLast<cr>
-nmap <silent> <leader>tv :TestVisit<cr>
-nmap <silent> <leader>tf :TestFile<cr>
+nmap <silent> tn :TestNearest<cr>
+nmap <silent> ts :TestSuite<cr>
+nmap <silent> tl :TestLast<cr>
+nmap <silent> tv :TestVisit<cr>
+nmap <silent> tf :TestFile<cr>
 
 " fzf
 " TODO: search todo, search like telescope
@@ -220,6 +223,14 @@ noremap <silent> <leader>sc :e ~/.config/nvim/init.vim<cr>
 " nvim tree
 nnoremap <silent> <cr> :NvimTreeFindFile<cr>
 nnoremap <silent> <leader>e :NvimTreeToggle<cr>
+
+" trouble
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 " }
 " -------
 

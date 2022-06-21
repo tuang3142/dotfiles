@@ -1,13 +1,9 @@
-- fzf highlight
-- hunk view on side (fugitive powered)
-
+- fzf advance
 - auto format
 - lsp prettier
-
+- whichkey
 - grep: find under cursor, better quickfix window
-
 - timpope idol package
 - tmux dim (like shade)
 - minialize dot files
-
 - setup script for new laptop (laptop.sh)
