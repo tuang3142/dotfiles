@@ -56,7 +56,7 @@ lvim.keys.normal_mode["<leader>gm"] = ':Git commit -m "'
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.nvimtree.show_icons.git = 0
+lvim.builtin.nvimtree.show_icons.git = 1
 -- lvim.builtin.lualine.options = { theme = 'gruvbox-material' }
 -- lvim.builtin.nvimtree.setup.view = {
 --   width = 100,
@@ -64,10 +64,9 @@ lvim.builtin.nvimtree.show_icons.git = 0
 --   relativenumber = true,
 --   preserve_window_proportions = true,
 -- }
-lvim.builtin.nvimtree.setup.view.width = 100
+lvim.builtin.nvimtree.setup.view.width = 60
 lvim.builtin.nvimtree.setup.view.number = true
 lvim.builtin.nvimtree.setup.view.relativenumber = true
-lvim.builtin.nvimtree.setup.view.preserve_window_proportions = true
 lvim.builtin.nvimtree.setup.filters = {}
 -- lvim.builtin.bufferline.active = false
 

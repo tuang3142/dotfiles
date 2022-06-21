@@ -23,7 +23,7 @@ set tabstop=2
 set softtabstop=2
 set expandtab
 set shiftwidth=2
-set hlsearch
+set nohlsearch
 
 " show incomplete commands
 set showcmd
@@ -38,14 +38,14 @@ set wildmode=list:longest,list:full
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<Tab>"
-    else
-        return "\<C-p>"
-    endif
-endfunction
+" function! InsertTabWrapper()
+"     let col = col('.') - 1
+"     if !col || getline('.')[col - 1] !~ '\k'
+"         return "\<Tab>"
+"     else
+"         return "\<C-p>"
+"     endif
+" endfunction
 
 " " Use ag over grep
 " if executable('ag')
@@ -68,13 +68,18 @@ let test#strategy = "vimux"
 " }
 " -------
 
-" PLUGINS {
+" PLUGS {
 call plug#begin(stdpath('data') . '/plugged')
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'onsails/lspkind-nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kdheepak/tabline.nvim'
-" Plug 'kristijanhusak/defx-git'
 Plug 'kristijanhusak/defx-icons'
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -85,12 +90,8 @@ Plug 'gruvbox-community/gruvbox'
   let gruvbox_contrast_dark='hard'
   let gruvbox_sign_column='none'
   let gruvbox_invert_selection='false'
-" Plug 'hrsh7th/cmp-nvim-lsp'
-" Plug 'hrsh7th/cmp-buffer'
-" Plug 'hrsh7th/nvim-cmp'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'edkolev/tmuxline.vim'
-" Plug 'neovim/nvim-lspconfig'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
@@ -99,7 +100,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'sevko/vim-nand2tetris-syntax'
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'glepnir/lspsaga.nvim'
 " Plug 'skwp/greplace.vim'
 " Plug 'tpope/vim-unimpaired'
 Plug 'preservim/vimux'
@@ -183,10 +183,10 @@ nmap j gj
 
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<cr>:cw<cr><cr>
-nnoremap <leader>a :Ag<SPACE>
+nnoremap <leader>a :Ag<cr><SPACE>
 
 " autocompletion
-set completeopt=menuone,noinsert,noselect
+" set completeopt=menuone,noinsert,noselect
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
