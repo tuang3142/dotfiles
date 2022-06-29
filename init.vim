@@ -88,7 +88,7 @@ Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'tpope/vim-abolish'
 Plug 'sunjon/Shade.nvim'
-Plug 'sainnhe/gruvbox-material'
+" Plug 'sainnhe/gruvbox-material'
 Plug 'gruvbox-community/gruvbox'
   let gruvbox_contrast_dark='hard'
   let gruvbox_sign_column='none'
@@ -248,9 +248,6 @@ if exists("&termguicolors") && exists("&winblend")
   set wildoptions=pum
   set pumblend=5
   set background=dark
-  " let g:gruvbox_material_background = 'hard'
-  " let g:gruvbox_material_better_performance = 1
-  " colorscheme gruvbox-material
   colorscheme gruvbox
 endif
 

@@ -17,14 +17,17 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  -- local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  -- vim.keymap.set('n', '<leader>pf', lua vim.lsp.buf.formatting_seq_sync()) -- prettier format
   -- buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
 
   -- formatting
   -- if client.server_capabilities.documentFormattingProvider then
-  --   vim.api.nvim_command [[augroup Format]]
-  --   vim.api.nvim_command [[autocmd! * <buffer>]]
-  --   vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
-  --   vim.api.nvim_command [[augroup END]]
+    -- vim.api.nvim_command [[augroup Format]]
+    -- vim.api.nvim_command [[autocmd! * <buffer>]]
+    -- vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
+    -- vim.api.nvim_command [[augroup END]]
+    -- buf_set_keymap('n', '<leader>pf', '<cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>', opts)
   -- end
 
   --protocol.SymbolKind = { }
@@ -68,37 +71,66 @@ nvim_lsp.flow.setup {
   capabilities = capabilities
 }
 
+-- Enable tsserver
+-- npm install -g typescript \
+--   typescript-language-server \
+--   diagnostic-languageserver \
+--   eslint_d eslint prettier \
+--   eslint-config-prettier eslint-plugin-prettier
+
 nvim_lsp.tsserver.setup {
-  on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  capabilities = capabilities
+  on_attach = function(client)
+      client.resolved_capabilities.document_formatting = false
+      client.resolved_capabilities.document_range_formatting = false
+      on_attach(client)
+  end
 }
 
 nvim_lsp.diagnosticls.setup {
   on_attach = on_attach,
   filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'pandoc' },
   init_options = {
+    -- linters = {
+    --   eslint = {
+    --     command = 'eslint_d',
+    --     -- rootPatterns = { '.git' },
+    --     rootPatterns = { '.eslintrc.json' },
+    --     debounce = 100,
+    --     args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
+    --     sourceName = 'eslint_d',
+    --     parseJson = {
+    --       errorsRoot = '[0].messages',
+    --       line = 'line',
+    --       column = 'column',
+    --       endLine = 'endLine',
+    --       endColumn = 'endColumn',
+    --       message = '[eslint] ${message} [${ruleId}]',
+    --       security = 'severity'
+    --     },
+    --     securities = {
+    --       [2] = 'error',
+    --       [1] = 'warning'
+    --     }
+    --   },
+    -- },
     linters = {
-      eslint = {
-        command = 'eslint_d',
-        rootPatterns = { '.git' },
-        debounce = 100,
-        args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
-        sourceName = 'eslint_d',
-        parseJson = {
-          errorsRoot = '[0].messages',
-          line = 'line',
-          column = 'column',
-          endLine = 'endLine',
-          endColumn = 'endColumn',
-          message = '[eslint] ${message} [${ruleId}]',
-          security = 'severity'
-        },
-        securities = {
-          [2] = 'error',
-          [1] = 'warning'
+        eslint = {
+            sourceName = "eslint",
+            command = "eslint_d",
+            rootPatterns = {".eslintrc", ".eslintrc.js", ".eslintrc.json", "package.json"},
+            debounce = 100,
+            args = {"--stdin", "--stdin-filename", "%filepath", "--format", "json"},
+            parseJson = {
+                errorsRoot = "[0].messages",
+                line = "line",
+                column = "column",
+                endLine = "endLine",
+                endColumn = "endColumn",
+                message = "${message} [${ruleId}]",
+                security = "severity"
+            },
+            securities = {[2] = "error", [1] = "warning"}
         }
-      },
     },
     filetypes = {
       javascript = 'eslint',
@@ -106,30 +138,40 @@ nvim_lsp.diagnosticls.setup {
       typescript = 'eslint',
       typescriptreact = 'eslint',
     },
+    -- formatters = {
+    --   eslint_d = {
+    --     command = 'eslint_d',
+    --     -- rootPatterns = { '.git' },
+    --     rootPatterns = { '.eslintrc.json' },
+    --     args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
+    --   },
+    --   prettier = {
+    --     command = 'prettier_d_slim',
+    --     -- rootPatterns = { '.git' },
+    --     rootPatterns = { '.prettierrc' },
+    --     -- requiredFiles: { 'prettier.config.js' },
+    --     args = { '--stdin', '--stdin-filepath', '%filename' }
+    --   }
+    -- },
     formatters = {
-      eslint_d = {
-        command = 'eslint_d',
-        rootPatterns = { '.git' },
-        args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
-        rootPatterns = { '.git' },
-      },
-      -- prettier = {
-      --   command = 'prettier_d_slim',
-      --   rootPatterns = { '.git' },
-      --   -- requiredFiles: { 'prettier.config.js' },
-      --   args = { '--stdin', '--stdin-filepath', '%filename' }
-      -- }
+      eslint = {command = "eslint_d", args = {"--fix-to-stdout", "--stdin", "--stdin-filename", "%filepath"}},
+      prettier = {
+        command = 'prettier_d_slim',
+        -- rootPatterns = { '.git' },
+        rootPatterns = { '.prettierrc' },
+        -- requiredFiles: { 'prettier.config.js' },
+        args = { '--stdin', '--stdin-filepath', '%filename' }
+      }
     },
     formatFiletypes = {
       css = 'prettier',
-      -- javascript = 'prettier',
-      -- javascriptreact = 'prettier',
-      -- json = 'prettier',
+      javascript = 'prettier',
+      javascriptreact = 'prettier',
+      json = 'prettier',
       scss = 'prettier',
       less = 'prettier',
-      -- typescript = 'prettier',
-      -- typescriptreact = 'prettier',
-      -- json = 'prettier',
+      typescript = 'prettier',
+      typescriptreact = 'prettier',
     }
   }
 }

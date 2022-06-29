@@ -1,9 +1,11 @@
+- whichkey advance
 - fzf advance
 - auto format
 - lsp prettier
-- whichkey
 - grep: find under cursor, better quickfix window
 - timpope idol package
 - tmux dim (like shade)
 - minialize dot files
 - setup script for new laptop (laptop.sh)
+- js refactor (like ruby, or create my own refactro)
+- snippet (it, const async, etc)
