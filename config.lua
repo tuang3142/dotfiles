@@ -10,13 +10,14 @@ an executable
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save = false
+lvim.format_on_save = true
 -- vim.cmd("let g:gruvbox_material_background = 'hard'")
 -- vim.cmd("let g:gruvbox_material_enable_bold=1")
 -- vim.cmd("let g:gruvbox_material_enable_italic=1")
 -- vim.cmd("let g:gruvbox_material_foreground='original'")
 -- lvim.colorscheme = "gruvbox-material"
-lvim.colorscheme = "gruvbox"
+-- lvim.colorscheme = "gruvbox"
+lvim.colorscheme = "solarized-flat"
 
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
@@ -56,7 +57,6 @@ lvim.keys.normal_mode["<leader>gm"] = ':Git commit -m "'
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.nvimtree.show_icons.git = 1
 -- lvim.builtin.lualine.options = { theme = 'gruvbox-material' }
 -- lvim.builtin.nvimtree.setup.view = {
 --   width = 100,
@@ -64,10 +64,13 @@ lvim.builtin.nvimtree.show_icons.git = 1
 --   relativenumber = true,
 --   preserve_window_proportions = true,
 -- }
-lvim.builtin.nvimtree.setup.view.width = 60
+-- lvim.builtin.nvimtree.setup.view.width = 30
 lvim.builtin.nvimtree.setup.view.number = true
 lvim.builtin.nvimtree.setup.view.relativenumber = true
+lvim.builtin.nvimtree.setup.view.adaptive_size = true
 lvim.builtin.nvimtree.setup.filters = {}
+lvim.builtin.nvimtree.setup.renderer.highlight_git = false
+lvim.builtin.nvimtree.setup.diagnostics.enable = false
 -- lvim.builtin.bufferline.active = false
 
 
@@ -163,6 +166,7 @@ lvim.plugins = {
   { "sainnhe/gruvbox-material" },
   { "christoomey/vim-tmux-navigator" },
   { "tpope/vim-fugitive" },
+  { 'tpope/vim-endwise' },
   { "sevko/vim-nand2tetris-syntax" },
   { "tpope/vim-repeat" },
   {
@@ -182,19 +186,21 @@ lvim.plugins = {
   { 'lukas-reineke/indent-blankline.nvim' },
   { 'gruvbox-community/gruvbox' },
   { 'marko-cerovac/material.nvim' },
-  { 'sunjon/shade.nvim' },
-  { 'folke/twilight.nvim' }
+  -- { 'sunjon/shade.nvim' },
+  { 'folke/twilight.nvim' },
+  { 'ishan9299/nvim-solarized-lua' },
+  { 'tpope/vim-rails' }
 }
 
-require 'shade'.setup({
-  overlay_opacity = 50,
-  opacity_step = 1,
-  keys = {
-    brightness_up   = '<C-Up>',
-    brightness_down = '<C-Down>',
-    toggle          = '<Leader>s',
-  }
-})
+-- require 'shade'.setup({
+--   overlay_opacity = 50,
+--   opacity_step = 1,
+--   keys = {
+--     brightness_up   = '<C-Up>',
+--     brightness_down = '<C-Down>',
+--     toggle          = '<Leader>s',
+--   }
+-- })
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
@@ -204,8 +210,9 @@ vim.cmd("let g:tmux_navigator_save_on_switch=2")
 vim.cmd("let g:tmux_navigator_disable_when_zoomed=1")
 vim.cmd("set relativenumber")
 vim.cmd("nnoremap <silent><cr> :NvimTreeFindFile<cr>")
-vim.cmd("nnoremap <silent>sl :e src/config/local.json<cr>")
+-- vim.cmd("nnoremap <silent>sl :e src/config/local.json<cr>")
 vim.cmd("nnoremap <silent>sp :e package.json<cr>")
+vim.cmd("nnoremap <silent>se :e Gemfile<cr>")
 vim.cmd("runtime ./plug.vim")
 -- vim.cmd("nnoremap <leader>R :%s/\<<C-r><C-w>\>//g<Left><Left>")
 -- vim.cmd("nnoremap <leader>w :wa <cr>")
@@ -240,7 +247,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   -- delay update diagnostics
   update_in_insert = false,
   -- display_diagnostic_autocmds = { "InsertLeave" },
- }
+}
 )
 
 -- Use which-key to add extra bindings with the leader-key prefix
@@ -266,7 +273,7 @@ formatters.setup {
 
 local dropdown_theme = { theme = "dropdown" }
 
-require'telescope'.setup {
+require 'telescope'.setup {
   pickers = {
     find_files = dropdown_theme,
     git_files = dropdown_theme,

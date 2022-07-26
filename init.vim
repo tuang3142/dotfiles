@@ -79,16 +79,16 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'onsails/lspkind-nvim'
-Plug 'nvim-lualine/lualine.nvim'
+Plug 'itchyny/lightline.vim'
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kdheepak/tabline.nvim'
-Plug 'kristijanhusak/defx-icons'
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'tpope/vim-abolish'
-Plug 'sunjon/Shade.nvim'
-" Plug 'sainnhe/gruvbox-material'
+" Plug 'sunjon/Shade.nvim'
 Plug 'gruvbox-community/gruvbox'
   let gruvbox_contrast_dark='hard'
   let gruvbox_sign_column='none'
