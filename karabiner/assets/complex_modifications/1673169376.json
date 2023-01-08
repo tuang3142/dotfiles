@@ -691,11 +691,6 @@
                 "left_option"
               ]
             }
-          ],
-          "to_if_alone": [
-            {
-              "key_code": "8"
-            }
           ]
         },
         {
@@ -792,7 +787,7 @@
           ],
           "to_if_alone": [
             {
-              "key_code": "3"
+              "key_code": "escape"
             }
           ]
         },
