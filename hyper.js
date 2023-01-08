@@ -8,7 +8,7 @@ module.exports = {
     // or `'canary'` for less polished but more frequent updates
     updateChannel: "stable",
     // default font size in pixels for all tabs
-    fontSize: 16,
+    fontSize: 14,
     // font family with optional fallbacks
     fontFamily: '"JetBrainsMono Nerd Font", monospace',
     // default font weight: 'normal' or 'bold'
@@ -101,7 +101,7 @@ module.exports = {
     // Supported Options:
     //  1. 'SOUND' -> Enables the bell as a sound
     //  2. false: turns off the bell
-    bell: "SOUND",
+    bell: false,
     // An absolute file path to a sound file on the machine.
     // bellSoundURL: '/path/to/sound/file',
     // if `true` (without backticks and without quotes), selected text will automatically be copied to the clipboard
@@ -142,7 +142,7 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: ["hyperborder", "hyper-solarized", "hyperminimal"],
+  plugins: ["hyper-solarized", "hyperminimal"],
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
   // to load it and avoid it being `npm install`ed

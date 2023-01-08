@@ -18,7 +18,7 @@ autocmd VimResized * wincmd =
 " enable filetype plugins
 filetype plugin on
 
-set autoindent
+" set autoindent
 set tabstop=2
 set softtabstop=2
 set expandtab
@@ -71,7 +71,7 @@ let test#strategy = "vimux"
 " PLUGS {
 call plug#begin(stdpath('data') . '/plugged')
 " Plug 'folke/which-key.nvim'
-Plug 'lewis6991/gitsigns.nvim'
+" Plug 'lewis6991/gitsigns.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -79,20 +79,17 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'onsails/lspkind-nvim'
-Plug 'itchyny/lightline.vim'
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ }
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'kdheepak/tabline.nvim'
+" Plug 'kdheepak/tabline.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'tpope/vim-abolish'
-" Plug 'sunjon/Shade.nvim'
-Plug 'gruvbox-community/gruvbox'
-  let gruvbox_contrast_dark='hard'
-  let gruvbox_sign_column='none'
-  let gruvbox_invert_selection='false'
+" Plug 'gruvbox-community/gruvbox'
+"   let gruvbox_contrast_dark='hard'
+"   let gruvbox_sign_column='none'
+"   let gruvbox_invert_selection='false'
+Plug 'ishan9299/nvim-solarized-lua'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'edkolev/tmuxline.vim'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
@@ -248,7 +245,7 @@ if exists("&termguicolors") && exists("&winblend")
   set wildoptions=pum
   set pumblend=5
   set background=dark
-  colorscheme gruvbox
+  colorscheme solarized-flat
 endif
 
 " change shape of cursor bwt modes
